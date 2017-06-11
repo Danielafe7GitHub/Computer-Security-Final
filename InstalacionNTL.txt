@@ -1,0 +1,31 @@
+/*Instalación NTL Ubuntu*/
+Primero es necesario instalar Libreria GMP 
+Fuente : http://linkevin.me/tutorial-installing-gmp-library-ubuntu/
+Pasos :
+Descarguen el Tar de aquí  https://gmplib.org/#DOWNLOAD.
+1. lo descomprimen 
+2.Entrean a la carpeta y allí adentro
+3.sudo apt-get install m4
+4. ./configure
+5. make
+6. sudo make install
+7. make check
+
+De todas formas vean Fuente por si me equivoco :)
+
+
+Luego instalamos NTL
+Fuente: http://www.shoup.net/ntl/doc/tour-unix.html
+
+Descargamos el tar de aquí: http://www.shoup.net/ntl/download.html
+Entramos a la carpeta y luego a src: Abril la terminal allí y seguir:
+   % ./configure 
+   % make
+   % make check
+   % sudo make install
+
+yy guala.
+
+Para compilar desde terminal.
+g++ -g -O2 ntl.c -o foo -lntl -lgmp -lm
+Que les pase en el mail.
