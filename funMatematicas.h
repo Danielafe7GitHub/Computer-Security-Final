@@ -1,3 +1,10 @@
+//
+// Created by jhoelccari on 11/06/17.
+//
+
+#ifndef COMPUTER_SECURITY_FINAL_FUNMATEMATICAS_H
+#define COMPUTER_SECURITY_FINAL_FUNMATEMATICAS_H
+
 #include <NTL/ZZ.h>
 #include <iostream>
 
@@ -36,13 +43,12 @@ ZZ phi()
 
 }
 
-void swap()
-{
+void swap(){
 
 }
 
-void cambioBase()
-{
+void cambioBase(){
 
 }
 
+#endif //COMPUTER_SECURITY_FINAL_FUNMATEMATICAS_H
