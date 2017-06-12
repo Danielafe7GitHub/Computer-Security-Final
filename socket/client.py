@@ -4,7 +4,8 @@ import socket
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 #> Intentamos establecer la coneccion con el server en el puerto 8888
-# cambiar @Param "localhost" por la ip con la que desea conectarse
+# La siguiente linea intenta establecer la conexion con el servidor localhost, es decir con tu mismo ordenador
+# Si se quiere hacer una conexion con otro ordenador -> cambiar @Param "localhost" por la ip con la que desea conectarse
 client.connect(("localhost", 8888))
 
 while True:
