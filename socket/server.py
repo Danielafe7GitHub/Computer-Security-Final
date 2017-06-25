@@ -7,10 +7,12 @@ class CServer:
     client = None
     address = None
     filePath = ""
-    def __init__(self, port = 8888, numBytes = 64):
+    def __init__(self, port = 8888, numBytes = 8):
         self.filePath = "../serverMessage.txt"
         self.portServer = port
         self.initServer(self.portServer)
+        #self.listen(numBytes)
+        #self.server.close()
         try:
             self.listen(numBytes)
         except Exception as e:
@@ -33,18 +35,11 @@ class CServer:
         (self.client, self.address) = self.server.accept()
 
     def listen(self, numBytes):
-        message = ""
         file = open(self.filePath, "w")
-        while True:
-            tmp = self.client.recv(numBytes)        # recibimos mensajes de 8 bytes del cliente
-            #print ("receiving ... ", tmp)
-            msg = tmp.decode('utf-8')   # Decodificamos el mensaje enviado
-            message = message + msg
-            print(msg)                  # Imprimimos
-            file.write(msg+"\n")
-            self.client.send(tmp)
-
+        tmp = self.client.recv(1024)
+        msg = tmp.decode('utf-8')
+        file.write(msg)
         file.close()
-        self.server.close()                  # Cerramos el servidor
+        self.server.close()
 
 serverSocket = CServer()
