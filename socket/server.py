@@ -6,39 +6,45 @@ class CServer:
     portServer = 8888
     client = None
     address = None
-    def __init__(self, port = 8888):
-        self.portServer= port
+    filePath = ""
+    def __init__(self, port = 8888, numBytes = 64):
+        self.filePath = "../serverMessage.txt"
+        self.portServer = port
         self.initServer(self.portServer)
-        #self.listen()
+        try:
+            self.listen(numBytes)
+        except Exception as e:
+            print ("Conecction is done!")
+            self.server.close()
 
     def initServer(self, port):
         #> Creamos el servidor
-        server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
+        self.server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        #self.server.setblocking(0)
         #> Asociamos a un host publico en el puerto 8888
         #NOTA: el cliente y el servidor tienen que establecer conexion por el mismo puerto
-        server.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
-        server.bind(('', port))
-
+        self.server.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
+        self.server.bind(('', port))
 
         #> listen le dice al servidor que tiene que escuchar 5 veces
-        server.listen(5)
+        self.server.listen(5)
 
         #> Aceptamos conexion externa
-        (self.client, self.address) = server.accept()
+        (self.client, self.address) = self.server.accept()
 
     def listen(self, numBytes):
+        message = ""
+        file = open(self.filePath, "w")
         while True:
             tmp = self.client.recv(numBytes)        # recibimos mensajes de 8 bytes del cliente
             #print ("receiving ... ", tmp)
             msg = tmp.decode('utf-8')   # Decodificamos el mensaje enviado
-            if msg == "quit":
-                break
+            message = message + msg
             print(msg)                  # Imprimimos
+            file.write(msg+"\n")
             self.client.send(tmp)
 
+        file.close()
         self.server.close()                  # Cerramos el servidor
 
-
 serverSocket = CServer()
-serverSocket.listen(8)
