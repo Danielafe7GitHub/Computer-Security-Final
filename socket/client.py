@@ -23,7 +23,14 @@ class CClient:
         self.client.connect((self.address, port))
         #self.client.setblocking(0)
 
-    def send(self, file):
+    def send(self, filep):
+       	self.filePath = filep
+       	tmp =open(self.filePath).read()
+       	data =tmp.encode('utf-8')
+       	self.client.sendall(data)
+       	self.client.close()
+
+    def send2(self, file):
         self.filePath = file
         msg = self.readFile(self.filePath)
         print (msg)
@@ -33,7 +40,7 @@ class CClient:
                 piece = self.removeTrash(piece)
             byte = piece.encode('utf-8')   # codificamos el mensaje en utf-8
             print (piece)
-            sleep(0.000000005)
+            sleep(0.0005)
             #print ("sending ...", piece, byte)
             self.client.send(byte)  # Enviamos el mensaje codificado
         self.client.close()                  # Cerramos socket cliente
@@ -47,5 +54,5 @@ class CClient:
         return str[:-1]
 
 
-clientSocket = CClient("localhost", 8888)
+clientSocket = CClient("192.168.1.102", 8888)
 clientSocket.send("../clientMessage.txt")
