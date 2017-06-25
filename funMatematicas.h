@@ -366,4 +366,60 @@ void cambioBase(){
 
 }
 
+///RC4
+
+void dec_to_hex(char*buffer,int number)
+{
+    long int decimalNumber,remainder,quotient;
+    int i=1,j,temp;
+    char hexadecimalNumber[100];
+
+    decimalNumber=number;
+
+    quotient = decimalNumber;
+
+    while(quotient!=0)
+    {
+        temp = quotient % 16;
+
+        //To convert integer into character
+        if( temp < 10)
+            temp =temp + 48;
+        else
+            temp = temp + 55;
+
+        hexadecimalNumber[i++]= temp;
+        quotient = quotient / 16;
+    }
+    int p=0;
+    if(i==2)
+    {
+        buffer[0]='0';
+        p=1;
+    }
+    for(j = i -1 ;j> 0;j--)
+    {
+        buffer[p]=hexadecimalNumber[j];
+        p++;
+    }
+    return;
+}
+
+int hex2dec(string hex)
+{
+    int result = 0;
+    for (int i=0; i<hex.length(); i++) {
+        if (hex[i]>=48 && hex[i]<=57)
+        {
+            result += (hex[i]-48)*pow(16,hex.length()-i-1);
+        } else if (hex[i]>=65 && hex[i]<=70) {
+            result += (hex[i]-55)*pow(16,hex.length( )-i-1);
+        } else if (hex[i]>=97 && hex[i]<=102) {
+            result += (hex[i]-87)*pow(16,hex.length()-i-1);
+        }
+    }
+    return result;
+}
+
+
 #endif //COMPUTER_SECURITY_FINAL_FUNMATEMATICAS_H
