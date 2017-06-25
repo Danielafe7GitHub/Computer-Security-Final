@@ -49,6 +49,9 @@ int main()
 
     loop:
 
+
+
+
     int opcion;
     cout<<" -------Hola Ingrese La Opcion que le Corresponde "<<endl;
     cout<<"  Si es Usted Quien Genera los Parametros Ingrese <<1>> "<<endl;
