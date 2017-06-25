@@ -8,7 +8,7 @@ class CServer:
     address = None
     filePath = ""
     def __init__(self, port = 8888, numBytes = 8):
-        self.filePath = "../serverMessage.txt"
+        self.filePath = "../documento.txt"
         self.portServer = port
         self.initServer(self.portServer)
         #self.listen(numBytes)
