@@ -16,17 +16,37 @@ using namespace NTL;
 
 int num_bits;
 
-ZZ modulo_Z(ZZ a, ZZ b)
-{
-    if(a==0)
-        return a-a;//cero
-    if(a>0)
-        return a-(b*(a/b));
-    if(abs(a)<b)
-        return b+a;///TENER CUIDADO A/B con -A sale -1
-    return a-(b*((a/b)-1));
-
+template<class F>
+F modulo(F a,F  n)//(-255,11)
+{  F  q1,r;
+         q1=a/n;//-255=11(-23);hallando (-23);
+         r=a-q1*n;//-255=11(-23)-2;hallando residuo=(-2)
+         if(r<0)//(-2)<0
+            {r=n+r;//11+(-2);
+             q1=q1-1;//(-23)-1;
+             }
+    return r;//11+(-2)=9
 }
+
+
+
+ZZ expon1(ZZ a,ZZ b,ZZ c)
+{
+    ZZ exp(1);
+    ZZ x=modulo(a,c);
+
+    while(b>0)
+    {
+      if(modulo(b,to_ZZ(2))==1)
+        {exp=modulo(exp*x,c);}
+      x=modulo(x*x,c);
+      b=b>>1;
+    }
+    return exp;
+}
+
+
+
 
   vector<ZZ>binario(ZZ num)
 {
@@ -35,7 +55,7 @@ ZZ modulo_Z(ZZ a, ZZ b)
     ZZ base=ZZ(2);
         while(num>=2)
         {
-            binarios.insert(binarios.begin(),modulo_Z(num,base));
+            binarios.insert(binarios.begin(),modulo(num,base));
             num=num>>1;
         }
         binarios.insert(binarios.begin(),num);
@@ -162,7 +182,7 @@ ZZ convert_to_decimal()///GENERA EL ALEATORIO EN DECIMAL
     //si es multiplo de 5 lo paso
     ZZ cinco=ZZ(5);
     ZZ cero=ZZ(0);
-    if(modulo_Z(num_decimal,cinco)==cero)
+    if(modulo(num_decimal,cinco)==cero)
     {
         num_decimal=num_decimal+2;
     }
@@ -185,7 +205,7 @@ bool Miller ( ZZ p, int iteration )
  ZZ s;
  sub(s,p,ZZ(1));
 
-  while ( modulo_Z(s, ZZ(2)) == 0)
+  while ( modulo(s, ZZ(2)) == 0)
      {
          s=RightShift(s,1);}// /2
 
@@ -202,11 +222,11 @@ bool Miller ( ZZ p, int iteration )
          modu = expo(a, temp , p);
          while ( temp != pmenos    &&      modu != ZZ(1)     &&     modu != pmenos)
              {
-                modu = modulo_Z((modu*modu) ,p);
+                modu = modulo((modu*modu) ,p);
                 temp= LeftShift(temp,1);
              }
 
-         if (modu != pmenos && modulo_Z(temp ,ZZ(2))== 0)
+         if (modu != pmenos && modulo(temp ,ZZ(2))== 0)
              {
 
                 return false ;
