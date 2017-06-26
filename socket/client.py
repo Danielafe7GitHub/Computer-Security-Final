@@ -26,9 +26,10 @@ class CClient:
 
     def send(self, filep):
        	self.filePath = filep
-       	tmp =open(self.filePath).read()
+       	tmp = open(self.filePath).read()
        	data =tmp.encode('utf-8')
        	self.client.sendall(data)
+        print ("cerrando conexion cliente!")
        	self.client.close()
 
     def send2(self, file):

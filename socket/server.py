@@ -41,6 +41,7 @@ class CServer:
         msg = tmp.decode('utf-8')
         file.write(msg)
         file.close()
+        print ("cerrando conexion servidor!")
         self.server.close()
 
 serverSocket = CServer()
