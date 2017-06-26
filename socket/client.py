@@ -54,6 +54,6 @@ class CClient:
         return str[:-1]
 
 
-address = input("ingrese ip a conectar: ")
-clientSocket = CClient(address, 8888)
+address = raw_input("ingrese ip a conectar: ")
+clientSocket = CClient(str(address), 8888)
 clientSocket.send("../documento.txt")
