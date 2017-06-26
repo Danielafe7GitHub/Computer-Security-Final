@@ -7,6 +7,7 @@ class CClient:
     client = None
     file = None
     def __init__(self, address, port = 8888):
+        print ("Iniciando cliente! ")
         self.address = address
         self.port = port
         print ("conectando a: ", self.address)
@@ -54,6 +55,6 @@ class CClient:
         return str[:-1]
 
 
-address = raw_input("ingrese ip a conectar: ")
+address = input("ingrese ip a conectar: ")
 clientSocket = CClient(str(address), 8888)
-clientSocket.send("../documento.txt")
+clientSocket.send("documento.txt")
