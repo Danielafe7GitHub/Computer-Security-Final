@@ -71,11 +71,11 @@ ZZ MasterKeyAlice(pair<ZZ,ZZ> par)
     while(a=="A")
     {
         doc.seekg(0,doc.beg);
-        cout<<"pos: "<<doc.tellg()<<endl;
+        //cout<<"pos: "<<doc.tellg()<<endl;
         getline(doc,a);
         //doc.seekg(0,doc.beg);
-        cout<<"pos: "<<doc.tellg()<<endl;
-        usleep(1000);
+        //cout<<"pos: "<<doc.tellg()<<endl;
+        usleep(3000);
     }
     getline(doc,bob);
     cout<<"Bob: "<<bob<<endl;

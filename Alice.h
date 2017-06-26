@@ -29,6 +29,9 @@ void readhelloServer()
     {
         serverHello.seekg(0,serverHello.beg);
         getline(serverHello,a);
+        serverHello.seekg(0,serverHello.beg);
+        //cout<<"espera"<<endl;
+        usleep(3000);
     }
     while(getline(serverHello,a))
     {
