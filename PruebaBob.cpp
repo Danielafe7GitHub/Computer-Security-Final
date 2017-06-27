@@ -9,8 +9,8 @@ int main()
     if(system("python3 socket/server.py"));
     readhelloClient();
     cin.get();
-    if(system("python3 socket/client.py"));
     serverHello();
+    if(system("python3 socket/client.py"));
     cin.get();
     intercambioClaves();
 }
