@@ -45,12 +45,9 @@ void AliceBob(ZZ prime, ZZ random)
 
 int main()
 {
-    
+
 
     loop:
-
-
-
 
     int opcion;
     cout<<" -------Hola Ingrese La Opcion que le Corresponde "<<endl;
@@ -74,7 +71,5 @@ int main()
         cout<<"Ingrese el Random generado: ";cin>>random;
         AliceBob(prime,random);
     }
-
-    
 
 }

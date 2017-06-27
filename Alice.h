@@ -12,9 +12,9 @@ void clientHello()
     clientHello.open("documento.txt" , std::ofstream::trunc);
     clientHello<<"A"<<endl;
     clientHello<<"Hola Bob: Algoritmo Predeterminado: Cesar."<<endl;
-    clientHello<<"Mis algoritmos son: RSA, Gamal, RC4, 3DES";
     clientHello.flush();
     clientHello.close();
+
 }
 
 void readhelloServer()
@@ -29,6 +29,9 @@ void readhelloServer()
     {
         serverHello.seekg(0,serverHello.beg);
         getline(serverHello,a);
+        serverHello.seekg(0,serverHello.beg);
+        //cout<<"espera"<<endl;
+        usleep(3000);
     }
     while(getline(serverHello,a))
     {

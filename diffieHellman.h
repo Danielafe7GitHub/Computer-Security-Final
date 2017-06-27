@@ -56,6 +56,7 @@ pair<ZZ,ZZ> AliceBob(ZZ prime, ZZ random)
     clavesPublicasDiffieHellman.flush();
     clavesPublicasDiffieHellman.close();
     cout<<"Puse claves"<<endl;
+    if(system("python3 socket/client.py"));
     return make_pair(prime,privateKey);
 }
 
@@ -65,17 +66,18 @@ ZZ MasterKeyAlice(pair<ZZ,ZZ> par)
     ifstream doc;
     string bob,a;
     ZZ bobkey;
+    if(system("python3 socket/server.py"));
     doc.open("documento.txt");
     doc.seekg(0,doc.beg);
     getline(doc,a);
     while(a=="A")
     {
         doc.seekg(0,doc.beg);
-        cout<<"pos: "<<doc.tellg()<<endl;
+        //cout<<"pos: "<<doc.tellg()<<endl;
         getline(doc,a);
         //doc.seekg(0,doc.beg);
-        cout<<"pos: "<<doc.tellg()<<endl;
-        usleep(1000);
+        //cout<<"pos: "<<doc.tellg()<<endl;
+        usleep(3000);
     }
     getline(doc,bob);
     cout<<"Bob: "<<bob<<endl;
@@ -120,6 +122,7 @@ ZZ sujetoNoGeneraParametros()
 {
     ZZ prime,random,pubAlice;
     string praim, ramdom, alice,a;
+    if(system("python3 socket/server.py"));
     ifstream doc;
     doc.open("documento.txt");
     doc.seekg(0,doc.beg);
