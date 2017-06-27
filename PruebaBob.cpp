@@ -16,4 +16,10 @@ int main()
     if(system("python3 socket/client.py"));
 
     if(system("python3 socket/server.py"));
+    ifstream decifrado;
+    decifrado.open("documento.txt");
+    string decipher;
+    getline(decifrado,decipher);
+    Cesar cesar(masterKey);
+    cout << cesar.decipher(decipher) << endl;
 }
