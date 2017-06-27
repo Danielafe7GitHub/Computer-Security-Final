@@ -2,14 +2,22 @@
 // Created by pokelover on 25/06/17.
 //
 
-#include "funMatematicas.h"
+#include "libreria.h"
 
 vector<unsigned int> S;
 vector<unsigned int> K;
 vector<char> key;
 
 
-
+class RC4
+{
+public:
+    string llave;
+    RC4(){};
+    void KRC4(string clave){
+        llave=clave;
+    };
+    ~RC4(){};
 
 void KSA()
 {
@@ -39,7 +47,7 @@ void PRGA()
     }
 }
 
-void RC4_init(string llave)
+void RC4_init()
 {
     S.resize(256);
     K.resize(256);
@@ -56,9 +64,9 @@ void RC4_init(string llave)
     PRGA();
 }
 
-string RC4_cypher(string text,string llave)
+string RC4_cypher(string text)
 {
-    RC4_init(llave);
+    RC4_init();
     string auxiliar="";
     int message[text.size()];
     for (int i=0;i<text.size();i++)
@@ -77,9 +85,9 @@ string RC4_cypher(string text,string llave)
     return auxiliar;
 }
 
-string RC4_decypher(string cypher,string llave)
+string RC4_decypher(string cypher)
 {
-    RC4_init(llave);
+    RC4_init();
     int ixor;
     string auxiliar="";
     int decypher[cypher.size()/2];
@@ -95,7 +103,7 @@ string RC4_decypher(string cypher,string llave)
     }
     return auxiliar;
 }
-
+};/*
 int main()
 {
     cout<<"Ingrese clave"<<endl;
@@ -105,7 +113,7 @@ int main()
     string mess;
     cin>>mess;
     cout<<"mensaje: "<<mess<<endl;
-    cout<<RC4_cypher(mess,clave)<<endl;
-    cout<<RC4_decypher(RC4_cypher(mess,clave),clave)<<endl;
+    cout<<RC4_cypher(mess)<<endl;
+    cout<<RC4_decypher(RC4_cypher(mess))<<endl;
 
-}
+}*/

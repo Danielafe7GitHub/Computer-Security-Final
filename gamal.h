@@ -10,8 +10,9 @@ using namespace std;
 class gamal
 {
     public:
-        gamal(int n_bit);
-        gamal(ZZ,ZZ,ZZ);
+       gamal();
+        void emisor_gamal(int n_bit);
+        void receptor_gamal(ZZ,ZZ,ZZ);
         ZZ resto_chino(ZZ);
         ZZ Generador(ZZ number);
         void generar_claves();
@@ -26,9 +27,12 @@ class gamal
         ZZ r;
         ZZ C1,Km;
 };
+gamal::gamal()
+{
+  
+}
 
-
-gamal::gamal(int n_bit)
+void gamal::emisor_gamal(int n_bit)
 {
 alfabeto="0123456789 abcdefghijklmnopqrstuvwxyz.,ABCDEFGHIJKLMNOPQRSTUVWXYZ*";
     n_bites=n_bit;
@@ -47,7 +51,7 @@ alfabeto="0123456789 abcdefghijklmnopqrstuvwxyz.,ABCDEFGHIJKLMNOPQRSTUVWXYZ*";
      f<<"d:"<<k_pr<<endl;
      ficheroSalida.close();*/
 }
-gamal::gamal(ZZ P,ZZ E1,ZZ E2)
+void gamal::receptor_gamal(ZZ P,ZZ E1,ZZ E2)
 {
 alfabeto="0123456789 abcdefghijklmnopqrstuvwxyz.,ABCDEFGHIJKLMNOPQRSTUVWXYZ*";
 

@@ -9,8 +9,9 @@ using namespace NTL;
 class RSA
 {
     public:
-        RSA(int bits);
-        RSA(ZZ,ZZ);
+      RSA();
+        void emisor_RSA(int bits);
+        void receptor_RSA(ZZ,ZZ);
         ZZ resto_chino(ZZ);
         string cifrar(string);
         string descifrar(string);
@@ -26,7 +27,12 @@ class RSA
           int bits;
         ZZ N,P,Q,E,D;
 };
-RSA::RSA(int n_b)//constructor para el receptor el que genera sus propias claves
+
+RSA::RSA()
+{
+  
+}
+void RSA::emisor_RSA(int n_b)//constructor para el receptor el que genera sus propias claves
 {    alfabeto="0123456789 abcdefghijklmnopqrstuvwxyz.,ABCDEFGHIJKLMNOPQRSTUVWXYZ*";
      this->bits=n_b;
      generar_claves();
@@ -44,7 +50,7 @@ RSA::RSA(int n_b)//constructor para el receptor el que genera sus propias claves
      ficheroSalida.close();*/
 
 }
-RSA::RSA(ZZ e,ZZ n)//segundo constructor para el que va a cifrar.
+void RSA::receptor_RSA(ZZ e,ZZ n)//segundo constructor para el que va a cifrar.
 {    this->E=e;
      this->N=n;
      alfabeto="0123456789 abcdefghijklmnopqrstuvwxyz.,ABCDEFGHIJKLMNOPQRSTUVWXYZ*";

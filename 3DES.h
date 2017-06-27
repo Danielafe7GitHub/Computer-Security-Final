@@ -14,8 +14,8 @@ public:
     CDES* des1;
     CDES* des2;
     CDES* des3;
-
-    TDES(string key1, string key2,string key3){
+    TDES(){};
+    void KTDES(string key1, string key2,string key3){
         des1 = new CDES(key1);
         des2 = new CDES(key2);
         des3 = new CDES(key3);
