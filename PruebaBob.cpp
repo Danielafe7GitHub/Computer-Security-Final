@@ -52,10 +52,10 @@ int main(){
     match=matchingAlgoritmos(algorythms,match);
     salida.open("documento.txt",std::ofstream::trunc);
     cout<<"Algoritmos compartidos:"<<endl;
-    for (int i=0;i<algorythms.size();i++)
+    for (int i=0;i<match.size();i++)
     {
-        salida<<algorythms[i]<<endl;
-        cout<<algorythms[i]<<endl;
+        salida<<match[i]<<endl;
+        cout<<match[i]<<endl;
     }
     salida.flush();
     salida.close();
