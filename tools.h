@@ -19,6 +19,17 @@ vector<string> matchingAlgoritmos(vector<string> server, vector<string> client )
     }
     return result;
 }
+vector<string> recopilar(ifstream * archivo)
+{
+    string auxiliar;
+    vector<string> retorno;
+    while (getline(archivo,auxiliar))
+    {
+        retorno.push_back(auxiliar);
+    }
+    archivo.close();
+    return retorno;
+}
 
 
 #endif //COMPUTER_SECURITY_FINAL_TOOLS_H
