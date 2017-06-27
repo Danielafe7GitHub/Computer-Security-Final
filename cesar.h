@@ -11,8 +11,8 @@ public:
     string alfabeto;
     Cesar(ZZ c)
     {
-        alfabeto="abcdefghijklmnopqstuvxyz ABCDEFGHIJKLMNOPQSTVXYZ_-.,{}():1234567890";
-        clave=c;
+        alfabeto="abcdefghijklmnopqstuvxyzABCDEFGHIJKLMNOPQSTVXYZ_-.,{}():1234567890";
+        clave=c%alfabeto.size();
     }
     string cipher(string texto)
     {
@@ -21,10 +21,7 @@ public:
         {
             int temp=(alfabeto.find(texto[i])+conv<int>(clave))%alfabeto.size();
             cifrado+=alfabeto[temp];
-
-
         }
-        cout<<cifrado<<endl;
         return cifrado;
 
     }
@@ -35,10 +32,7 @@ public:
         {
             int temp=(alfabeto.find(texto[i])-conv<int>(clave))%alfabeto.size();
             descifrado+=alfabeto[temp];
-
-
         }
-        cout<<descifrado<<endl;
         return descifrado;
 
     }
