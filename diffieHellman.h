@@ -66,6 +66,7 @@ ZZ MasterKeyAlice(pair<ZZ,ZZ> par)
     ifstream doc;
     string bob,a;
     ZZ bobkey;
+    if(system("python3 socket/server.py"));
     doc.open("documento.txt");
     doc.seekg(0,doc.beg);
     getline(doc,a);
