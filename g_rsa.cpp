@@ -4,6 +4,8 @@
 #include <fstream>
 #include "3DES.h"
 #include "RC4.cpp"
+#include<NTL/ZZ.h>
+using namespace NTL;
 
 
 #include"RSA.h"
@@ -41,12 +43,17 @@ return ordenAlg;
 }
 
 
-string cipher()
+string cipher(string mensaje,ZZ MK)
 {
      cout<<"CIPHER"<<endl;
-    string key1,key2,key3,mensaje;
-    cout<<"Ingrese MENSAJE para cifrar:"<<endl;
-    getline(cin,mensaje);
+    string key1,key2,key3,clave="",llave="";
+    vector<string> keys;
+
+    char buffer[2];
+    int dMK,a=0;
+    dMK=conv<int>(MK);
+
+
     vector<string> ordenAlg=readListALg();
 
     for (int i = 0; i < ordenAlg.size(); ++i)
@@ -54,12 +61,27 @@ string cipher()
 
         if(ordenAlg[i]== "3DES")
         {
-             cout<<"3DES"<<endl;
+            cout<<"3DES"<<endl;
+            for(int j=0;j<3;j++)
+            {clave="";
+            int w=0;
+            do
+            {
+                a+=dMK%16;
+                dec_to_hex(buffer,a);
+
+                clave+=buffer[2];
+                w++;
+            }while(w<16);
+            keys.push_back(clave);
+            llave+=keys[j];
+        }
+         /* 
             cout << "Ingrese su clave 1:";cin>>key1;
             cout << "Ingrese su clave 2:";cin>>key2;
             cout << "Ingrese su clave 3:";cin>>key3;
-            cout<<endl;
-            des.KTDES(key1,key2,key3);
+            cout<<endl;]*/
+            des.KTDES(keys[0],keys[1],keys[2]);
             mensaje=des.cipher(mensaje);
             //descifrado=des.decipher(mensaje);
         }else if(ordenAlg[i]== "RSA")
@@ -79,9 +101,9 @@ string cipher()
         }else if(ordenAlg[i]== "RC4")
         {
              cout<<"RC4"<<endl;
-            string llave;
+         /*   string llave;
             cout << "Ingrese su clave :";cin>>llave;
-
+*/
             rc4.KRC4(llave);
             mensaje= rc4.RC4_cypher(mensaje);
     //  cout<<rc4.RC4_decypher(RC4_cypher(mess))<<endl;
@@ -172,14 +194,19 @@ int main()
 {
 ofstream listaAlgoritmos;
     listaAlgoritmos.open("listaAlgoritmos.txt");
-  // listaAlgoritmos<<"3DES"<<endl;
+   listaAlgoritmos<<"3DES"<<endl;
   //  listaAlgoritmos<<"RSA"<<endl;
-  //  listaAlgoritmos<<"RC4"<<endl;
+    listaAlgoritmos<<"RC4"<<endl;
   //  listaAlgoritmos<<"GAMAL"<<endl;
     listaAlgoritmos.close();
+    string mensaje;
+    ZZ MK(1);
+
+    cout<<"Ingrese MENSAJE para cifrar:"<<endl;
+    getline(cin,mensaje);
 
     
-    string cifrado=cipher();
+    string cifrado=cipher(mensaje,MK);
     cout<<"cifrado "<<cifrado<<endl;
     cout<<"descifrado "<<decipher(cifrado)<<endl;
 
