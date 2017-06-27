@@ -20,12 +20,6 @@ int main()
     string aux;
     clientHello();
     if(system("python3 socket/client.py"));
-    cout<<"   if(system("python3 socket/client.py"));
-    if(system("python3 socket/server.py"));
-    entrada.open("documento.txt");
-    getline(entrada,aux);
-    entrada.close();
-  Saludé"<<endl;
     if(system("python3 socket/server.py"));
     readhelloServer();
     intercambioClaves();
@@ -66,6 +60,18 @@ int main()
     for(int i=0;i<match.size();i++)
     {
         cout<<match[i]<<endl;
+    }
+    if(system("python3 socket/server.py"));
+    vector<string> auxiliar;
+    auxiliar=recopilar(cesar);
+    for(int i=0;i<auxiliar.size();i++)
+    {
+        secuencia.push_back(stoi(auxiliar[i]));
+    }
+    cout<<"Secuencia de algoritmos"<<endl;
+    for(int i=0;i<secuencia.size();i++)
+    {
+        cout<<match[i]<<"->"<<secuencia[i]<<endl;
     }
 
     //192.168.199.9
