@@ -11,7 +11,7 @@ public:
     string alfabeto;
     Cesar(ZZ c)
     {
-        alfabeto="abcdefghijklmnopqrstuvxyz ABCDEFGHIJKLMNOPQRSTVXYZ_-.,{}():1234567890";
+        this->alfabeto="abcdefghijklmnopqrstuvxyz ABCDEFGHIJKLMNOPQRSTVXYZ_-.,{}():1234567890";
         clave=c%alfabeto.size();
     }
     string cipher(string texto)
@@ -19,7 +19,7 @@ public:
         string cifrado="";
         for (int i=0;i<texto.size();i++)
         {
-            int temp=(alfabeto.find(texto[i])+conv<int>(clave))%alfabeto.size();
+            int temp=modulo((alfabeto.find(texto[i])+conv<int>(clave)),alfabeto.size());
             cifrado+=alfabeto[temp];
         }
         return cifrado;
@@ -28,9 +28,11 @@ public:
     string decipher(string texto)
     {
         string descifrado="";
+        int aux;
         for (int i=0;i<texto.size();i++)
         {
-            int temp=(alfabeto.find(texto[i])-conv<int>(clave))%alfabeto.size();
+            aux= alfabeto.find(texto[i]);
+            int temp=modulo((aux-conv<int>(clave)),alfabeto.size());
             descifrado+=alfabeto[temp];
         }
         return descifrado;
