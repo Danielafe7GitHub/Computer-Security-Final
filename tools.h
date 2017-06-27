@@ -49,6 +49,18 @@ vector<int> serie(vector<string> algoritmos)
     }
     return res;
 }
+/*
+void escribir(vector<string> text, string archivo, Cesar cesar){
 
+    salida.open(archivo, std::ofstream::trunc);
+    cout << "Algoritmos compartidos:" << endl;
+    for (int i = 0; i < text.size(); i++) {
+        salida << cesar.cipher(text[i]) << endl;
+        cout << text[i] << endl;
+    }
+    salida.flush();
+    salida.close();
+}
+*/
 
 #endif //COMPUTER_SECURITY_FINAL_TOOLS_H

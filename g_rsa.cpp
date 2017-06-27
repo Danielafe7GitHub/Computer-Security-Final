@@ -192,7 +192,7 @@ string decipher(string mensaje)
 
 int main()
 {
-ofstream listaAlgoritmos;
+    ofstream listaAlgoritmos;
     listaAlgoritmos.open("listaAlgoritmos.txt");
    listaAlgoritmos<<"3DES"<<endl;
   //  listaAlgoritmos<<"RSA"<<endl;
