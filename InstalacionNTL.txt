@@ -27,5 +27,5 @@ Entramos a la carpeta y luego a src: Abril la terminal allí y seguir:
 yy guala.
 
 Para compilar desde terminal.
-g++ -g -O2 ntl.c -o foo -lntl -lgmp -lm
+g++ -g -O2 ntl.c -o foo -lntl -lgmp -lm -std=c++11
 Que les pase en el mail.
