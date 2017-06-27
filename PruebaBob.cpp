@@ -48,7 +48,7 @@ int main(){
     /// NEGOCIACION INICIO
     if(system("python3 socket/server.py"));
     entrada.open("documento.txt");
-    match=recopilar(entrada);
+    match=recopilar();
     match=matchingAlgoritmos(match,algorythms);
     salida.open("documento.txt",std::ofstream::trunc);
     cout<<"Algoritmos compartidos:"<<endl;

@@ -19,9 +19,11 @@ vector<string> matchingAlgoritmos(vector<string> server, vector<string> client )
     }
     return result;
 }
-vector<string> recopilar(ifstream * archivo)
+vector<string> recopilar()
 {
     string auxiliar;
+    ifstream archivo;
+    archivo.open("documento.txt");
     vector<string> retorno;
     while (getline(archivo,auxiliar))
     {

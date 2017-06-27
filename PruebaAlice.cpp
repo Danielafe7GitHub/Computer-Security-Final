@@ -54,7 +54,7 @@ int main()
     if(system("python3 socket/server.py"));
 
     entrada.open("documento.txt");
-    match=recopilar(entrada);
+    match=recopilar();
     cout<<"Algoritmos compartidos:"<<endl;
     for(int i=0;i<match.size();i++)
     {
