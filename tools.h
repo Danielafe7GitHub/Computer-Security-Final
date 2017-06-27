@@ -6,18 +6,18 @@
 #define COMPUTER_SECURITY_FINAL_TOOLS_H
 
 #include <vector>
-#include <string>
+#include <iostream>
+using namespace std;
 
-vector<string> recopilar(ifstream * archivo)
-{
-    string auxiliar;
-    vector<string> retorno;
-    while (getline(archivo,auxiliar))
-    {
-        retorno.push_back(auxiliar);
+vector<string> matchingAlgoritmos(vector<string> server, vector<string> client ){
+    vector<string> result;
+    for( int i=0; i< server.size(); i++){
+        for (int j = 0; j < client.size(); j++) {
+            if( server[i]==client[j])
+                result.push_back(server[i]);
+        }
     }
-    archivo.close();
-    return retorno;
+    return result;
 }
 
 

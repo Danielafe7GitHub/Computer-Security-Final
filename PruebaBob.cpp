@@ -3,8 +3,10 @@
 //
 
 #include "BOBServer.h"
+#include "tools.h"
 vector<string> algorithms{"RSA","RC4","FEISTEL","CESAR","3DES","ElGamal"};
-vector<string> compare;
+//vector<string> algorithms2{"RSA","asdfFEISTEL","CESAR","3DES","ElGamal"};
+vector<string> match;
 
 int main(){
     /// HANDSHAKE INICIO
