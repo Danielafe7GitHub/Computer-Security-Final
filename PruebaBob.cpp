@@ -4,7 +4,7 @@
 
 #include "BOBServer.h"
 #include "tools.h"
-vector<string> algorythms{"RSA","RC4","FEISTEL","CESAR","3DES","ElGamal"};
+vector<string> algorythms{"RSA","RC4,3DES","FEISTEL","CESAR","ElGamal"};
 //vector<string> algorithms2{"RSA","asdfFEISTEL","CESAR","3DES","ElGamal"};
 vector<string> match;
 vector<int> secuencia;
