@@ -119,8 +119,9 @@ string CDES::f(string r, string k) //r is of 32 bits ; k is of 48 bits
     f = PermutationP(f);
     return f;
 }
-string CDES::cipher(string plain)
+string CDES::cipher(string plain) /// plain is a text in hexadecimal
 {
+    //cout << "cifrado" << endl;
     string cipher;
     plain = HexToBin(plain);
     //cout <<"Plain to Binary: \n"<< plain << endl;
@@ -131,11 +132,14 @@ string CDES::cipher(string plain)
     string L[17];
     string R[17];
     for (int i=0,k=0; i< sizePlain ; i+=64,k++ ){
-        piece = plain.substr(i*k,i+64);
+        //cout << i<< " "<< k <<" "<<64*k << " " << i+64<< endl;
+        piece = plain.substr(64*k,i+64);
         piece = initialPermutation(piece);
-        //cout << piece << endl;
+        //cout << k << " " <<piece << endl;
         L[0] = piece.substr(0,32);
         R[0] = piece.substr(32,32);
+        //cout <<" L " << L[0]<<endl;
+        //cout <<" R " << R[0] << endl;
         for(int j=1; j<17 ; j++){
             L[j] = R[j-1];
             bitset<32> tmpL(L[j-1]); bitset<32> tmpR(f(R[j-1],keys[j-1]));
@@ -143,12 +147,12 @@ string CDES::cipher(string plain)
         }
         cipher += finalPermutation(R[16]+L[16]);
     }
-
     return StrToHex(cipher) ;
 }
 
 string CDES::decipher(string plain)
 {
+    //cout << "decifrado" << endl;
     string cipher;
     plain = HexToBin(plain);
     //cout <<"Plain to Binary: \n"<< plain << endl;
@@ -172,8 +176,10 @@ string CDES::decipher(string plain)
         }
         cipher += finalPermutation(R[16]+L[16]);
     }
+    //cout << cipher << endl;
     return StrToHex(cipher) ;
 }
+
 
 string CDES::initialPermutation(string t)
 {
