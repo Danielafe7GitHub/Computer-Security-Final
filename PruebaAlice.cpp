@@ -4,8 +4,13 @@
 
 #include "Alice.h"
 
+vector<string> algorythms {"RSA","3DES","RC4","ElGammal","GHOST"};
+vector<string> compare;
+
+
 int main()
 {
+    ///HANDSHAKE CLIENTE
     ofstream salida;
     ifstream entrada;
     string challenge="Desde este momento todo lo que diga sera cifrado";
@@ -34,5 +39,16 @@ int main()
         cout<<"Comunicación fallida"<<endl;
         return 1;
     }
+    ///TERMINA HANDSHAKE
+
+    ///NEGOCIACIÓN DE ALGORITMOS
+    salida.open("documento.txt",std::ofstream::trunc);
+    for (int i=0;i<algorythms.size();i++)
+    {
+        salida<<algorythms[i]<<endl;
+    }
+    salida.flush();
+    salida.close();
+    if(system("python3 socket/client.py"));
 }
 
