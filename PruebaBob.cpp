@@ -16,17 +16,19 @@ int main(){
     if(system("python3 socket/client.py"));
 
     if(system("python3 socket/server.py"));
-    ifstream decifrado;
-    ofstream algo;
-    decifrado.open("documento.txt");
-    string decipher;
-    getline(decifrado,decipher);
-    decifrado.close();
+    ifstream entrada;
+    ofstream salida;
+    entrada.open("documento.txt");
+    string aux;
+    getline(entrada,aux);
+    entrada.close();
     Cesar cesar(masterKey);
 
-    if ( cesar.decipher(decipher) == challenge){
-        algo.open("documento.txt",std::ofstream::trunc);
-        algo << cesar.cipher(challenge)<< endl;
+    if ( cesar.decipher(aux) == challenge){
+        salida.open("documento.txt",std::ofstream::trunc);
+        salida << cesar.cipher(challenge)<< endl;
+        salida.flush();
+        if(system("python3 socket/client.py"));
     } else{
         cout << "Comunicacion fallida! " << endl;
         cout << "Bye, bye!! " << endl;
