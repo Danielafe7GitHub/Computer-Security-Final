@@ -7,6 +7,8 @@
 vector<string> algorythms{"RSA","RC4","FEISTEL","CESAR","3DES","ElGamal"};
 //vector<string> algorithms2{"RSA","asdfFEISTEL","CESAR","3DES","ElGamal"};
 vector<string> match;
+vector<int> secuencia;
+
 
 int main(){
     /// HANDSHAKE INICIO
@@ -48,13 +50,13 @@ int main(){
     /// NEGOCIACION INICIO
     if(system("python3 socket/server.py"));
     entrada.open("documento.txt");
-    match=recopilar();
+    match=recopilar(cesar);
     match=matchingAlgoritmos(algorythms,match);
     salida.open("documento.txt",std::ofstream::trunc);
     cout<<"Algoritmos compartidos:"<<endl;
     for (int i=0;i<match.size();i++)
     {
-        salida<<match[i]<<endl;
+        salida<<cesar.cipher(match[i])<<endl;
         cout<<match[i]<<endl;
     }
     salida.flush();

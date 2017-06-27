@@ -7,6 +7,7 @@
 
 #include <vector>
 #include <iostream>
+#include "cesar.h"
 using namespace std;
 
 vector<string> matchingAlgoritmos(vector<string> server, vector<string> client ){
@@ -22,7 +23,7 @@ vector<string> matchingAlgoritmos(vector<string> server, vector<string> client )
     }
     return result;
 }
-vector<string> recopilar()
+vector<string> recopilar(Cesar cesar)
 {
     string auxiliar;
     ifstream archivo;
@@ -30,7 +31,7 @@ vector<string> recopilar()
     vector<string> retorno;
     while (getline(archivo,auxiliar))
     {
-        retorno.push_back(auxiliar);
+        retorno.push_back(cesar.decipher(auxiliar));
     }
     archivo.close();
     return retorno;

@@ -5,8 +5,9 @@
 #include "Alice.h"
 #include "tools.h"
 
-vector<string> algorythms {"RSA","3DES","RC4","ElGammal","GHOST"};
+vector<string> algorythms {"RSA","RC4,3DES","ElGamal","GHOST"};
 vector<string> match;
+vector<int> secuencia;
 
 
 int main()
@@ -46,7 +47,7 @@ int main()
     salida.open("documento.txt",std::ofstream::trunc);
     for (int i=0;i<algorythms.size();i++)
     {
-        salida<<algorythms[i]<<endl;
+        salida<<cesar.cipher(algorythms[i])<<endl;
     }
     salida.flush();
     salida.close();
@@ -54,12 +55,13 @@ int main()
     if(system("python3 socket/server.py"));
 
     entrada.open("documento.txt");
-    match=recopilar();
+    match=recopilar(cesar);
     cout<<"Algoritmos compartidos:"<<endl;
     for(int i=0;i<match.size();i++)
     {
         cout<<match[i]<<endl;
     }
 
+    //192.168.199.9
 }
 
