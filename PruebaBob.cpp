@@ -13,4 +13,5 @@ int main()
     if(system("python3 socket/client.py"));
     cin.get();
     intercambioClaves();
+    if(system("python3 socket/client.py"));
 }

@@ -11,7 +11,6 @@ class CClient:
         self.address = address
         self.port = port
         self.initClient(self.address, self.port)
-        print ("conectando a: ", self.address)
 
     def initClient(self, address, port):
         #> Creamos el socket cliente
@@ -21,7 +20,9 @@ class CClient:
         # La siguiente linea intenta establecer la conexion con el servidor localhost, es decir con tu mismo ordenador
         # Si se quiere hacer una conexion con otro ordenador -> cambiar @Param "localhost" por la ip con la que desea conectarse
         #client.connect(("192.168.1.107", 8888))
+        print ("conectando a: ", self.address," en progreso ...")
         self.client.connect((self.address, port))
+        print ("conectado a: ", self.address, " ! 3:)")
         #self.client.setblocking(0)
 
     def send(self, filep):
@@ -30,8 +31,8 @@ class CClient:
        	data = tmp.encode('utf-8')
         print ("enviando a ", self.address, " : ", tmp)
        	self.client.sendall(data)
-        print ("cerrando conexion cliente!")
        	self.client.close()
+        print ("cerrando conexion cliente!")
 
     def send2(self, file):
         self.filePath = file
