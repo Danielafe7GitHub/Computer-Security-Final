@@ -10,11 +10,14 @@
 using namespace std;
 
 vector<string> matchingAlgoritmos(vector<string> server, vector<string> client ){
+    cout << " EN matching algoritmos " << endl;
     vector<string> result;
     for( int i=0; i< server.size(); i++){
         for (int j = 0; j < client.size(); j++) {
-            if( server[i]==client[j])
+            if( server[i]==client[j]) {
+                cout << server[i] << endl;
                 result.push_back(server[i]);
+            }
         }
     }
     return result;

@@ -49,7 +49,7 @@ int main(){
     if(system("python3 socket/server.py"));
     entrada.open("documento.txt");
     match=recopilar();
-    match=matchingAlgoritmos(match,algorythms);
+    match=matchingAlgoritmos(algorythms,match);
     salida.open("documento.txt",std::ofstream::trunc);
     cout<<"Algoritmos compartidos:"<<endl;
     for (int i=0;i<algorythms.size();i++)
@@ -61,6 +61,6 @@ int main(){
     salida.close();
     if(system("python3 socket/client.py"));
 
-    //192.168.1.104
+    //192.168.199.19
 
 }
