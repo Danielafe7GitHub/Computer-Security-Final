@@ -10,8 +10,8 @@ class CClient:
         print ("Iniciando cliente! ")
         self.address = address
         self.port = port
-        print ("conectando a: ", self.address)
         self.initClient(self.address, self.port)
+        print ("conectando a: ", self.address)
 
     def initClient(self, address, port):
         #> Creamos el socket cliente

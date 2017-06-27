@@ -56,6 +56,7 @@ pair<ZZ,ZZ> AliceBob(ZZ prime, ZZ random)
     clavesPublicasDiffieHellman.flush();
     clavesPublicasDiffieHellman.close();
     cout<<"Puse claves"<<endl;
+    if(system("python3 socket/client.py"));
     return make_pair(prime,privateKey);
 }
 
@@ -120,6 +121,7 @@ ZZ sujetoNoGeneraParametros()
 {
     ZZ prime,random,pubAlice;
     string praim, ramdom, alice,a;
+    if(system("python3 socket/server.py"));
     ifstream doc;
     doc.open("documento.txt");
     doc.seekg(0,doc.beg);
