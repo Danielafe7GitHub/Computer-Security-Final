@@ -4,7 +4,7 @@
 
 #include "BOBServer.h"
 #include "tools.h"
-vector<string> algorithms{"RSA","RC4","FEISTEL","CESAR","3DES","ElGamal"};
+vector<string> algorythms{"RSA","RC4","FEISTEL","CESAR","3DES","ElGamal"};
 //vector<string> algorithms2{"RSA","asdfFEISTEL","CESAR","3DES","ElGamal"};
 vector<string> match;
 
@@ -47,6 +47,19 @@ int main(){
 
     /// NEGOCIACION INICIO
     if(system("python3 socket/server.py"));
+    entrada.open("documento.txt");
+    match=recopilar(entrada);
+    match=matchingAlgoritmos(match,algorythms);
+    salida.open("documento.txt",std::ofstream::trunc);
+    cout<<"Algoritmos compartidos:"<<endl;
+    for (int i=0;i<algorythms.size();i++)
+    {
+        salida<<algorythms[i]<<endl;
+        cout<<algorythms[i]<<endl;
+    }
+    salida.flush();
+    salida.close();
+    if(system("python3 socket/client.py"));
 
     //192.168.1.104
 
