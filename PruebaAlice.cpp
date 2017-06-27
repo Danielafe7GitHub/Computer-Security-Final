@@ -3,9 +3,10 @@
 //
 
 #include "Alice.h"
+#include "tools.h"
 
 vector<string> algorythms {"RSA","3DES","RC4","ElGammal","GHOST"};
-vector<string> compare;
+vector<string> match;
 
 
 int main()
@@ -50,5 +51,15 @@ int main()
     salida.flush();
     salida.close();
     if(system("python3 socket/client.py"));
+    if(system("python3 socket/server.py"));
+
+    entrada.open("documento.txt");
+    match=recopilar(entrada);
+    cout<<"Algoritmos compartidos:"<<endl;
+    for(int i=0;i<match.size();i++)
+    {
+        cout<<match[i]<<endl;
+    }
+
 }
 
