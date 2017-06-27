@@ -3,8 +3,11 @@
 //
 
 #include "BOBServer.h"
+vector<string> algorithms{"RSA","RC4","FEISTEL","CESAR","3DES","ElGamal"};
+vector<string> compare;
 
 int main(){
+    /// HANDSHAKE INICIO
     string challenge= "Desde este momento todo lo que diga sera cifrado";
     if(system("python3 socket/server.py"));
     readhelloClient();
@@ -21,8 +24,10 @@ int main(){
     entrada.close();
     Cesar cesar(masterKey);
     salida.open("documento.txt",std::ofstream::trunc);
+    cout << "auxiliar " << aux << endl;
+    cout << "-> " <<cesar.decipher(aux) << endl;
     if ( cesar.decipher(aux) == challenge){
-        cout << "-> " <<cesar.decipher(aux) << endl;
+
         salida << cesar.cipher(challenge)<< endl;
         salida.flush();
         salida.close();
@@ -36,5 +41,11 @@ int main(){
         if(system("python3 socket/client.py"));
         return 1;
     }
+    /// HANDSHAKE FIN
+
+    /// NEGOCIACION INICIO
+    if(system("python3 socket/server.py"));
+
+    //192.168.1.104
 
 }

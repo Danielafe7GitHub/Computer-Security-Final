@@ -1,0 +1,10 @@
+//
+// Created by jhoelccari on 26/06/17.
+//
+
+#ifndef COMPUTER_SECURITY_FINAL_TOOLS_H
+#define COMPUTER_SECURITY_FINAL_TOOLS_H
+
+
+
+#endif //COMPUTER_SECURITY_FINAL_TOOLS_H
