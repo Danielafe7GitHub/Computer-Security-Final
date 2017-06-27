@@ -11,7 +11,7 @@ public:
     string alfabeto;
     Cesar(ZZ c)
     {
-        alfabeto="abcdefghijklmnopqstuvxyz ABCDEFGHIJKLMNOPQSTVXYZ_-.,{}():1234567890";
+        alfabeto="abcdefghijklmnopqrstuvxyz ABCDEFGHIJKLMNOPQRSTVXYZ_-.,{}():1234567890";
         clave=c%alfabeto.size();
     }
     string cipher(string texto)
