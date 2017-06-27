@@ -12,6 +12,7 @@ vector<int> secuencia;
 
 int main()
 {
+
     ///HANDSHAKE CLIENTE
     ofstream salida;
     ifstream entrada;
@@ -19,7 +20,12 @@ int main()
     string aux;
     clientHello();
     if(system("python3 socket/client.py"));
-    cout<<"Saludé"<<endl;
+    cout<<"   if(system("python3 socket/client.py"));
+    if(system("python3 socket/server.py"));
+    entrada.open("documento.txt");
+    getline(entrada,aux);
+    entrada.close();
+  Saludé"<<endl;
     if(system("python3 socket/server.py"));
     readhelloServer();
     intercambioClaves();

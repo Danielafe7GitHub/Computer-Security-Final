@@ -8,6 +8,8 @@
 #include <vector>
 #include <iostream>
 #include "cesar.h"
+#include <NTL/ZZ.h>
+
 using namespace std;
 
 vector<string> matchingAlgoritmos(vector<string> server, vector<string> client ){
@@ -36,6 +38,16 @@ vector<string> recopilar(Cesar cesar)
     }
     archivo.close();
     return retorno;
+}
+
+vector<int> serie(vector<string> algoritmos)
+{
+    vector <int> res;
+    for (int i=0;i<algoritmos.size();i++)
+    {
+        res.push_back((RandomBits_ZZ(5)%3)+1);
+    }
+    return res;
 }
 
 
