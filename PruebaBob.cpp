@@ -8,13 +8,10 @@ int main(){
     string challenge= "Desde este momento todo lo que diga sera cifrado";
     if(system("python3 socket/server.py"));
     readhelloClient();
-    cin.get();
     serverHello();
     if(system("python3 socket/client.py"));
-    cin.get();
     intercambioClaves();
     if(system("python3 socket/client.py"));
-
     if(system("python3 socket/server.py"));
     ifstream entrada;
     ofstream salida;

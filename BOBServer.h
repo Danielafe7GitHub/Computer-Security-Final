@@ -13,7 +13,6 @@ void serverHello()
     serverHello.open("documento.txt" , std::ofstream::trunc);
     serverHello<<"B"<<endl;
     serverHello<<"Hola Alice: Algoritmo Predeterinado: Cesar"<<endl;
-    serverHello<<"Mis algoritmos son: RSA, RC4, 3DES, Cesar"<<endl;
     serverHello.flush();
     serverHello.close();
 
@@ -25,8 +24,6 @@ void readhelloClient()
     string leerClient;
     ifstream clientHello;
     clientHello.open("documento.txt");
-    //clientHello>>leerClient;
-    //cout<<leerClient<<endl;
     string a;
     clientHello.seekg(0,clientHello.beg);
     getline(clientHello,a);
