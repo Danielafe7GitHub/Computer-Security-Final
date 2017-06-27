@@ -23,15 +23,20 @@ int main(){
     getline(entrada,aux);
     entrada.close();
     Cesar cesar(masterKey);
-
+    salida.open("documento.txt",std::ofstream::trunc);
     if ( cesar.decipher(aux) == challenge){
-        salida.open("documento.txt",std::ofstream::trunc);
+        cout << "-> " <<cesar.decipher(aux) << endl;
         salida << cesar.cipher(challenge)<< endl;
         salida.flush();
+        salida.close();
         if(system("python3 socket/client.py"));
     } else{
+        salida << "Comunicacion fallida! " << endl;
+        salida.flush();
+        salida.close();
         cout << "Comunicacion fallida! " << endl;
         cout << "Bye, bye!! " << endl;
+        if(system("python3 socket/client.py"));
         return 1;
     }
 
