@@ -27,7 +27,8 @@ class CClient:
     def send(self, filep):
        	self.filePath = filep
        	tmp = open(self.filePath).read()
-       	data =tmp.encode('utf-8')
+       	data = tmp.encode('utf-8')
+        print ("enviando a ", self.address, " : ", tmp)
        	self.client.sendall(data)
         print ("cerrando conexion cliente!")
        	self.client.close()
@@ -54,7 +55,6 @@ class CClient:
 
     def removeTrash(self, str):
         return str[:-1]
-
 
 address = input("ingrese ip a conectar: ")
 clientSocket = CClient(str(address), 8888)
