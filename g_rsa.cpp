@@ -9,7 +9,7 @@ using namespace NTL;
 
 
 #include"RSA.h"
-#define block_size 8
+
 
 using namespace std;
 /*euclides mejorado
@@ -17,6 +17,9 @@ euclides extendido mejorado
 fermata
 teorema del resto chino
 */
+
+int block_size;
+
 
 gamal greceptor;
 RC4 rc4;
@@ -28,6 +31,13 @@ RSA rsaemisor;
 
 vector<string>deskey;
 string rckey;
+
+void bloques()
+{
+    string ayuda;
+    ayuda=ZZ_a_string(rsareceptor.N);
+    block_size=ayuda.size();
+}
 
 void tdeskey(ZZ MK)
 {
