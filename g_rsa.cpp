@@ -83,9 +83,9 @@ void rc4key(vector<string> tdeskey)
 
 string cipher(string mensaje,vector<int>secuencia,vector<string>match)
 {
-    int cant_bloques=(mensaje.size()/block_size)+1;
-    cout<<"Tamaño de bloques: "<<block_size<<endl;
-    while(mensaje.size()%block_size)
+    int cant_bloques=(mensaje.size()/block_size_cif)+1;
+    cout<<"Tamaño de bloques: "<<block_size_cif<<endl;
+    while(mensaje.size()%block_size_cif)
     {
         mensaje+='*';
         cout<<"añado basura"<<endl;
@@ -139,8 +139,8 @@ string cipher(string mensaje,vector<int>secuencia,vector<string>match)
 }
 
 string decifrado(string mensaje, vector<int> secuencia, vector<string> match){
-    int cant_bloques=(mensaje.size()/block_size)+1;
-    while(mensaje.size()%block_size)
+    int cant_bloques=(mensaje.size()/block_size_des)+1;
+    while(mensaje.size()%block_size_des)
     {
         mensaje+='*';
         cout<<"añado basura"<<endl;
