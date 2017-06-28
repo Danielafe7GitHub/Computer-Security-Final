@@ -65,6 +65,11 @@ int main()
     {
         cout<<match[i]<<endl;
     }
+    if(system("python3 socket/client.py"));
+    salida.open("documento.txt",std::ofstream::trunc);
+    salida<<"OK"<<endl;
+    salida.flush();
+    salida.close();
     if(system("python3 socket/server.py"));
     vector<string> auxiliar;
     auxiliar=recopilar(cesar);
@@ -79,7 +84,7 @@ int main()
     }
 
     ///GENERACION DE CLAVES SIMETRICAS
-    deskey=tdeskey(ZZ(masterKey);
+    deskey=tdeskey(masterKey);
     cout<<"Claves 3DES"<<endl;
     for(int i=0;i<deskey.size();i++)
     {
@@ -95,10 +100,13 @@ int main()
     salida.flush();
     salida.close();
     if(system("python3 socket/client.py"));
+    if(system("python3 socket/server.py"));
+
 
 
 
 
     //192.168.199.9
+
 }
 
