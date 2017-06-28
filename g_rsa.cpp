@@ -66,12 +66,15 @@ string cipher(string mensaje,vector<int>secuencia,vector<string>match)
     while(mensaje.size()%block_size)
     {
         mensaje+='*';
+        cout<<"añado basura"<<endl;
     }
     string resultado="";
+    cout<<"cantidad de bloques"<<cant_bloques<<endl;
     for(int i=0;i<cant_bloques;i++)
     {
-        if (match[i]=="RSA")
+        if (match[i%match.size()]=="RSA")
         {
+            cout<<"cifrado con RSA"<<endl;
             for(int j=0;j<secuencia[i];j++)
             {
                 resultado+=rsaemisor.cifrar(mensaje.substr(i*8,8));
@@ -82,8 +85,9 @@ string cipher(string mensaje,vector<int>secuencia,vector<string>match)
                 }
             }
         }
-        if (match[i]=="RC4,3DES")
+        else if (match[i%match.size()]=="RC4,3DES")
         {
+            cout<<"cifrado simetrico"<<endl;
             for(int j=0;j<secuencia[i];j++)
             {
             resultado+=des.cipher(rc4.RC4_cypher(mensaje.substr(i*8,8)));
@@ -94,8 +98,9 @@ string cipher(string mensaje,vector<int>secuencia,vector<string>match)
                 }
             }
         }
-        if (match[i]=="ElGamal")
+        else if (match[i%match.size()]=="ElGamal")
         {
+            cout<<"cifrado con ElGamal"<<endl;
             for(int j=0;j<secuencia[i];j++)
             {
             resultado+=gemisor.cifrar(mensaje.substr(i*8,8));
