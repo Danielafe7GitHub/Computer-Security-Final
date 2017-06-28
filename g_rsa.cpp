@@ -31,6 +31,7 @@ string rckey;
 
 void tdeskey(ZZ MK)
 {
+    cout <<"Bob en tdeskey"<<endl;
     int dMK, a = 0;
     dMK = conv<int>(MK);
     vector<string> keys;
@@ -40,22 +41,29 @@ void tdeskey(ZZ MK)
         clave = "";
         int w = 0;
         do {
+            //cout <<"..."<<endl;
             a += dMK % 16;
             dec_to_hex(buffer, a);
             clave += buffer[1];
+            cout << clave << endl;
             w++;
         } while (w < 16);
         keys.push_back(clave);
     }
     deskey=keys;
+    cout <<" termina tdesley" << endl;
+    return;
 }
 
 void rc4key(vector<string> tdeskey)
 {
+    cout << " fucniton rc4key" << endl;
+    cout << tdeskey.size() << endl;
     string key="";
     for (int i=0; i<tdeskey.size();i++)
     {
         key+=tdeskey[i];
+        cout << "key: " << key << endl;
     }
     rckey=key;
 }
@@ -110,6 +118,61 @@ string cipher(string mensaje,vector<int>secuencia,vector<string>match)
                 break;
             }
         }
+        }
+        cout<<resultado<<endl;
+    }
+    return resultado;
+}
+
+string decifrado(string mensaje, vector<int> secuencia, vector<string> match){
+    int cant_bloques=(mensaje.size()/block_size)+1;
+    while(mensaje.size()%block_size)
+    {
+        mensaje+='*';
+        cout<<"añado basura"<<endl;
+    }
+    string resultado="";
+    cout<<"cantidad de bloques"<<cant_bloques<<endl;
+    for(int i=0;i<cant_bloques;i++)
+    {
+        if (match[i%match.size()]=="RSA")
+        {
+            cout<<"cifrado con RSA"<<endl;
+            for(int j=0;j<secuencia[i];j++)
+            {
+                resultado+=rsaemisor.descifrar(mensaje.substr(i*8,8));
+                i++;
+                if(i>=cant_bloques)
+                {
+                    break;
+                }
+            }
+        }
+        else if (match[i%match.size()]=="RC4,3DES")
+        {
+            cout<<"cifrado simetrico"<<endl;
+            for(int j=0;j<secuencia[i];j++)
+            {
+                resultado+=des.decipher(rc4.RC4_cypher(mensaje.substr(i*8,8)));
+                i++;
+                if(i>=cant_bloques)
+                {
+                    break;
+                }
+            }
+        }
+        else if (match[i%match.size()]=="ElGamal")
+        {
+            cout<<"cifrado con ElGamal"<<endl;
+            for(int j=0;j<secuencia[i];j++)
+            {
+                resultado+=gemisor.descifrar(mensaje.substr(i*8,8));
+                i++;
+                if(i>=cant_bloques)
+                {
+                    break;
+                }
+            }
         }
         cout<<resultado<<endl;
     }

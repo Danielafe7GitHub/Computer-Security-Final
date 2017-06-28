@@ -5,6 +5,7 @@
 #include "Alice.h"
 #include "tools.h"
 #include "g_rsa.cpp"
+#include "libreria.h"
 
 vector<string> algorythms {"RSA","RC4,3DES","ElGamal","GHOST"};
 vector<string> match;

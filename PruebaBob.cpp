@@ -9,8 +9,7 @@ vector<string> algorythms{"RSA","RC4,3DES","FEISTEL","CESAR","ElGamal"};
 //vector<string> algorithms2{"RSA","asdfFEISTEL","CESAR","3DES","ElGamal"};
 vector<string> match;
 vector<int> secuencia;
-vector<string>deskey;
-string rckey;
+
 
 int main() {
     /// HANDSHAKE INICIO
@@ -75,28 +74,38 @@ int main() {
     }
     salida.flush();
     salida.close();
-    if (system("python3 socket/client.py"));
 
+    if (system("python3 socket/client.py"));
+    cout << " despues de secuencia" << endl;
     ///GENERACION DE CLAVES SIMETRICAS
-    deskey=tdeskey(masterKey);
-    cout<<"Claves 3DES"<<endl;
-    for(int i=0;i<deskey.size();i++)
-    {
-        cout<<"->"<<deskey[i]<<endl;
-    }
-    rckey=rc4key(deskey);
+    cout << "masterKey: " << masterKey << endl;
+    tdeskey(masterKey);
+    cout << " despues de secuencia 1" << endl;
+
+    rc4key(deskey);
+    cout << " despues de secuencia 2" << endl;
     cout<<"Clave RC4: "<<rckey<<endl;
     ///GENERACION DE CLAVES ASIMETRICAS PUBLICAS
     rsaemisor.emisor_RSA(256);
     gemisor.emisor_gamal(256);
     if(system("python3 socket/server.py"));
-    /*
+
+    vector<string> publicKeys = recopilar(cesar);
+
+    rsareceptor.receptor_RSA(string_a_ZZ(publicKeys[0]),string_a_ZZ(publicKeys[1]));
+    greceptor.receptor_gamal(string_a_ZZ(publicKeys[4]),string_a_ZZ(publicKeys[2]),string_a_ZZ(publicKeys[3]));
+
     salida.open("documento.txt",std::ofstream::trunc);
-    salida<<rsaemisor.E<<endl<<rsaemisor.N<<endl<<gemisor.e1<<endl<<gemisor.e2<<endl<<gemisor.p<<endl;
+    salida<<cesar.cipher(ZZ_a_string(rsaemisor.E))<<endl;
+    salida<<cesar.cipher(ZZ_a_string(rsaemisor.N))<<endl;
+    salida<<cesar.cipher(ZZ_a_string(gemisor.e1))<<endl;
+    salida<<cesar.cipher(ZZ_a_string(gemisor.e2))<<endl;
+    salida<<cesar.cipher(ZZ_a_string(gemisor.p))<<endl;
     salida.flush();
     salida.close();
     if(system("python3 socket/client.py"));
-    */
+
+
     //192.168.199.19
 
 }
