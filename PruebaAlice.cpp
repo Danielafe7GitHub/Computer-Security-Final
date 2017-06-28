@@ -96,7 +96,11 @@ int main()
     rsaemisor.emisor_RSA(256);
     gemisor.emisor_gamal(256);
     salida.open("documento.txt",std::ofstream::trunc);
-    salida<<rsaemisor.E<<endl<<rsaemisor.N<<endl<<gemisor.e1<<endl<<gemisor.e2<<endl<<gemisor.p<<endl;
+    salida<<cesar.cipher(to_string(rsaemisor.E)<<endl;
+    salida<<cesar.cipher(to_string(rsaemisor.N)<<endl;
+    salida<<cesar.cipher(to_string(gemisor.e1)<<endl;
+    salida<<cesar.cipher(to_string(gemisor.e2)<<endl;
+    salida<<cesar.cipher(to_string(gemisor.p)<<endl;
     salida.flush();
     salida.close();
     if(system("python3 socket/client.py"));
