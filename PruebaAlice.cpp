@@ -9,8 +9,7 @@
 vector<string> algorythms {"RSA","RC4,3DES","ElGamal","GHOST"};
 vector<string> match;
 vector<int> secuencia;
-vector<string>deskey;
-string rckey;
+
 
 
 int main()
@@ -84,13 +83,8 @@ int main()
     }
 
     ///GENERACION DE CLAVES SIMETRICAS
-    deskey=tdeskey(masterKey);
-    cout<<"Claves 3DES"<<endl;
-    for(int i=0;i<deskey.size();i++)
-    {
-        cout<<"->"<<deskey[i]<<endl;
-    }
-    rckey=rc4key(deskey);
+    tdeskey(masterKey);
+    rc4key(deskey);
     cout<<"Clave RC4: "<<rckey<<endl;
     ///GENERACION DE CLAVES ASIMETRICAS PUBLICAS
     rsaemisor.emisor_RSA(256);

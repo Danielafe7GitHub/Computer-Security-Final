@@ -33,7 +33,7 @@ vector<string> recopilar(Cesar cesar)
     vector<string> retorno;
     while (getline(archivo,auxiliar))
     {
-        cout<<"." <<cesar.decipher(auxiliar)<<endl;
+        //cout<<"." <<cesar.decipher(auxiliar)<<endl;
         retorno.push_back(cesar.decipher(auxiliar));
     }
     archivo.close();

@@ -26,8 +26,10 @@ TDES des;
 gamal gemisor;
 RSA rsaemisor;
 
+vector<string>deskey;
+string rckey;
 
-vector<string> tdeskey(ZZ MK)
+void tdeskey(ZZ MK)
 {
     int dMK, a = 0;
     dMK = conv<int>(MK);
@@ -45,18 +47,22 @@ vector<string> tdeskey(ZZ MK)
         } while (w < 16);
         keys.push_back(clave);
     }
-    return keys;
+    deskey=keys;
 }
 
-string rc4key(vector<string> tdeskey)
+void rc4key(vector<string> tdeskey)
 {
     string key="";
     for (int i=0; i<tdeskey.size();i++)
     {
         key+=tdeskey[i];
     }
-    return key;
+    rckey=key;
 }
+
+string cipher(string mensaje,)
+
+
 /*
 string cipher(string mensaje,ZZ MK)
 {
