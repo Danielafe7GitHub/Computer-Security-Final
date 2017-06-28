@@ -18,7 +18,8 @@ fermata
 teorema del resto chino
 */
 
-int block_size;
+int block_size_des;
+int block_size_cif;
 
 
 gamal greceptor;
@@ -36,7 +37,9 @@ void bloques()
 {
     string ayuda;
     ayuda=ZZ_a_string(rsareceptor.N);
-    block_size=ayuda.size();
+    block_size_cif=ayuda.size();
+    ayuda=ZZ_a_string(rsaemisor.N);
+    block_size_des=ayuda.size();
 }
 
 void tdeskey(ZZ MK)
@@ -81,6 +84,7 @@ void rc4key(vector<string> tdeskey)
 string cipher(string mensaje,vector<int>secuencia,vector<string>match)
 {
     int cant_bloques=(mensaje.size()/block_size)+1;
+    cout<<"Tamaño de bloques: "<<block_size<<endl;
     while(mensaje.size()%block_size)
     {
         mensaje+='*';

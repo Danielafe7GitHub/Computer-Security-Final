@@ -97,6 +97,7 @@ int main() {
     rsareceptor.receptor_RSA(string_a_ZZ(publicKeys[0]), string_a_ZZ(publicKeys[1]));
     greceptor.receptor_gamal(string_a_ZZ(publicKeys[4]), string_a_ZZ(publicKeys[2]), string_a_ZZ(publicKeys[3]));
 
+    bloques();
     string mensaje;
     cin >> mensaje;
     aux = cipher(mensaje, secuencia, match);
