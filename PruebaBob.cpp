@@ -103,7 +103,12 @@ int main() {
     salida<<cesar.cipher(ZZ_a_string(gemisor.p))<<endl;
     salida.flush();
     salida.close();
+    cout<<"Enviar claves públicas"<<endl;
     if(system("python3 socket/client.py"));
+    if(system("python3 socket/server.py"));
+    entrada.open("documento.txt");
+    getline(entrada,aux);
+    cout<<decifrado(aux,secuencia,match);
 
 
     //192.168.199.19
