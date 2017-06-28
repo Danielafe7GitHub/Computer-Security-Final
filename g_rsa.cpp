@@ -60,7 +60,6 @@ void rc4key(vector<string> tdeskey)
     rckey=key;
 }
 
-string cipher(string mensaje,)
 
 
 /*
