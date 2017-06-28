@@ -27,22 +27,37 @@ gamal gemisor;
 RSA rsaemisor;
 
 
-vector<string> readListALg()
+vector<string> tdeskey(ZZ MK)
 {
-    string leer;
-    vector<string> ordenAlg;
-    ifstream listAlg;
-    listAlg.open("listaAlgoritmos.txt");
-    
-    while(getline(listAlg,leer))
-    {
-        ordenAlg.push_back(leer);
+    int dMK, a = 0;
+    dMK = conv<int>(MK);
+    vector<string> keys;
+    char buffer[2];
+    string clave;
+    for (int j = 0; j < 3; j++) {
+        clave = "";
+        int w = 0;
+        do {
+            a += dMK % 16;
+            dec_to_hex(buffer, a);
+            clave += buffer[1];
+            w++;
+        } while (w < 16);
+        keys.push_back(clave);
     }
-    listAlg.close();
-return ordenAlg;
+    return keys;
 }
 
-
+string rc4key(vector<string> tdeskey)
+{
+    string key="";
+    for (int i=0; i<tdeskey.size();i++)
+    {
+        key+=tdeskey[i];
+    }
+    return key;
+}
+/*
 string cipher(string mensaje,ZZ MK)
 {
      cout<<"CIPHER"<<endl;
@@ -75,12 +90,13 @@ string cipher(string mensaje,ZZ MK)
             }while(w<16);
             keys.push_back(clave);
             llave+=keys[j];
-        }
+        }*/
          /* 
             cout << "Ingrese su clave 1:";cin>>key1;
             cout << "Ingrese su clave 2:";cin>>key2;
             cout << "Ingrese su clave 3:";cin>>key3;
             cout<<endl;]*/
+/*
             des.KTDES(keys[0],keys[1],keys[2]);
             mensaje=des.cipher(mensaje);
             //descifrado=des.decipher(mensaje);
@@ -94,16 +110,16 @@ string cipher(string mensaje,ZZ MK)
             cout << "Ingrese su N:";cin>>n;cout<<endl;
             cin.ignore();
             rsareceptor.receptor_RSA(E,n);
-            mensaje=rsareceptor.cifrar(mensaje);
+            mensaje=rsareceptor.cifrar(mensaje);*/
           /*  Mensaje=emisor.descifrar(cifrado);
             cout<<"\tMENSAJE ORIGINAL:\n";
-            cout<<Mensaje<<endl;*/
+            cout<<Mensaje<<endl;*//*
         }else if(ordenAlg[i]== "RC4")
         {
-             cout<<"RC4"<<endl;
+             cout<<"RC4"<<endl;*/
          /*   string llave;
             cout << "Ingrese su clave :";cin>>llave;
-*/
+*//*
             rc4.KRC4(llave);
             mensaje= rc4.RC4_cypher(mensaje);
     //  cout<<rc4.RC4_decypher(RC4_cypher(mess))<<endl;
@@ -146,14 +162,14 @@ string decipher(string mensaje)
          if(ordenAlg[i]== "3DES")
         {
             cout<<"3DES"<<endl;
-         
+         */
           /*  cout << "Ingrese su clave 1:";cin>>key1;
             cout << "Ingrese su clave 2:";cin>>key2;
             cout << "Ingrese su clave 3:";cin>>key3;
             cout<<endl;
             TDES des(key1,key2,key3);
             mensaje=des.cipher(mensaje);*/
-            mensaje=des.decipher(mensaje);
+           /* mensaje=des.decipher(mensaje);
         }else if(ordenAlg[i]==  "RSA")
         {
              cout<<"RSA"<<endl;
@@ -185,71 +201,9 @@ string decipher(string mensaje)
     }
         return mensaje;
     
-}
+}*/
 
 
 
 
-int main()
-{
-    ofstream listaAlgoritmos;
-    listaAlgoritmos.open("listaAlgoritmos.txt");
-   listaAlgoritmos<<"3DES"<<endl;
-  //  listaAlgoritmos<<"RSA"<<endl;
-    listaAlgoritmos<<"RC4"<<endl;
-  //  listaAlgoritmos<<"GAMAL"<<endl;
-    listaAlgoritmos.close();
-    string mensaje;
-    ZZ MK(1);
 
-    cout<<"Ingrese MENSAJE para cifrar:"<<endl;
-    getline(cin,mensaje);
-
-    
-    string cifrado=cipher(mensaje,MK);
-    cout<<"cifrado "<<cifrado<<endl;
-    cout<<"descifrado "<<decipher(cifrado)<<endl;
-
-
-/*
-    RSA  emisor(32);
-    string cifrado,mensaje;string Mensaje;
-    ZZ E,n;
-    cout<<endl;
-    cout << "Ingrese su clave publica E:";cin>>E;
-    cout << "Ingrese su N:";cin>>n;cout<<endl;
-    cin.ignore();
-    RSA receptor(E,n);
-    cout<<"ingrese MENSAJE para cifrar:"<<endl;
-    getline(cin,mensaje);
-    cifrado=receptor.cifrar(mensaje);
-  Mensaje=emisor.descifrar(cifrado);
-    cout<<"\tMENSAJE ORIGINAL:\n";
-    cout<<Mensaje<<endl;
-*/
-
-
-
-
-/*
-
-    gamal  g(128);
-  //  RSA r(32);
-
-    string cifrado,mensaje;
-    ZZ E1,E2,P;
-	cout<<endl;
-	cout << "Ingrese su clave publica E1:";cin>>E1;
-	cout << "Ingrese su clave publica E2:";cin>>E2;
-	cout << "Ingrese su p:";cin>>P;cout<<endl;
-	cin.ignore();
-	gamal receptor(P,E1,E2);
-	cout<<"ingrese MENSAJE para cifrar:"<<endl;
-	getline(cin,mensaje);
-	cifrado=receptor.cifrar(mensaje);
-    cout<<"cifrado: "<<cifrado<<endl;
-
-
-    cout<<g.descifrar(cifrado)<<endl;*/
-   return 0;
-}

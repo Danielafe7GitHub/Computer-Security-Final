@@ -10,6 +10,7 @@ using namespace std;
 class gamal
 {
     public:
+    ZZ p,e1,e2;
        gamal();
         void emisor_gamal(int n_bit);
         void receptor_gamal(ZZ,ZZ,ZZ);
@@ -23,7 +24,7 @@ class gamal
 
     private:
         int n_bites;
-        ZZ p,e1,e2,k_pr;
+        ZZ k_pr;
         ZZ r;
         ZZ C1,Km;
 };
@@ -34,7 +35,7 @@ gamal::gamal()
 
 void gamal::emisor_gamal(int n_bit)
 {
-alfabeto="0123456789 abcdefghijklmnopqrstuvwxyz.,ABCDEFGHIJKLMNOPQRSTUVWXYZ*";
+alfabeto="abcdefghijklmnopqrstuvxyz ABCDEFGHIJKLMNOPQRSTVXYZ_-.,{}():1234567890*";
     n_bites=n_bit;
     generar_claves();
      ofstream ficheroSalida;

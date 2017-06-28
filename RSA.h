@@ -9,6 +9,7 @@ using namespace NTL;
 class RSA
 {
     public:
+    ZZ E,N;
       RSA();
         void emisor_RSA(int bits);
         void receptor_RSA(ZZ,ZZ);
@@ -21,11 +22,11 @@ class RSA
 
     protected:
        string alfabeto;//="0123456789 abcdefghijklmnopqrstuvwxyz.,ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-                     //"abcdefghijklmnñopqrstuvwxyz ABCDEFGHIJKLMOPQRSTUVWXYZ0123456789.,;:-_()@{}+/";
+                     //"abcdefghijklmnï¿½opqrstuvwxyz ABCDEFGHIJKLMOPQRSTUVWXYZ0123456789.,;:-_()@{}+/";
 
     private:
           int bits;
-        ZZ N,P,Q,E,D;
+        ZZ P,Q,D;
 };
 
 RSA::RSA()
@@ -33,7 +34,7 @@ RSA::RSA()
   
 }
 void RSA::emisor_RSA(int n_b)//constructor para el receptor el que genera sus propias claves
-{    alfabeto="0123456789 abcdefghijklmnopqrstuvwxyz.,ABCDEFGHIJKLMNOPQRSTUVWXYZ*";
+{    alfabeto="abcdefghijklmnopqrstuvxyz ABCDEFGHIJKLMNOPQRSTVXYZ_-.,{}():1234567890*";
      this->bits=n_b;
      generar_claves();
      ofstream ficheroSalida;

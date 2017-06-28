@@ -4,14 +4,18 @@
 
 #include "Alice.h"
 #include "tools.h"
+#include "g_rsa.cpp"
 
 vector<string> algorythms {"RSA","RC4,3DES","ElGamal","GHOST"};
 vector<string> match;
 vector<int> secuencia;
+vector<string>deskey;
+string rckey;
 
 
 int main()
 {
+
 
     ///HANDSHAKE CLIENTE
     ofstream salida;
@@ -73,6 +77,27 @@ int main()
     {
         cout<<match[i]<<"->"<<secuencia[i]<<endl;
     }
+
+    ///GENERACION DE CLAVES SIMETRICAS
+    deskey=tdeskey(ZZ(masterKey);
+    cout<<"Claves 3DES"<<endl;
+    for(int i=0;i<deskey.size();i++)
+    {
+        cout<<"->"<<deskey[i]<<endl;
+    }
+    rckey=rc4key(deskey);
+    cout<<"Clave RC4: "<<rckey<<endl;
+    ///GENERACION DE CLAVES ASIMETRICAS PUBLICAS
+    rsaemisor.emisor_RSA(256);
+    gemisor.emisor_gamal(256);
+    salida.open("documento.txt",std::ofstream::trunc);
+    salida<<rsaemisor.E<<endl<<rsaemisor.N<<endl<<gemisor.e1<<endl<<gemisor.e2<<endl<<gemisor.p<<endl;
+    salida.flush();
+    salida.close();
+    if(system("python3 socket/client.py"));
+
+
+
 
     //192.168.199.9
 }
