@@ -98,12 +98,15 @@ int main()
     salida.flush();
     salida.close();
     if(system("python3 socket/client.py"));
-    if(system("python3 socket/server.py"));
+    cout<<"EMPIEZA CIFRADO"<<endl;
+    //if(system("python3 socket/server.py"));
     vector<string>publicKeys=recopilar(cesar);
     rsareceptor.receptor_RSA(string_a_ZZ(publicKeys[0]),string_a_ZZ(publicKeys[1]));
     greceptor.receptor_gamal(string_a_ZZ(publicKeys[4]),string_a_ZZ(publicKeys[2]),string_a_ZZ(publicKeys[3]));
 
-
+    string mensaje;
+    cin>>mensaje;
+    cout<<cipher(mensaje,secuencia,match);
 
 
 

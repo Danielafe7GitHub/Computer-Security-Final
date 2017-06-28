@@ -9,7 +9,7 @@ using namespace NTL;
 
 
 #include"RSA.h"
-
+#define block_size 8
 
 using namespace std;
 /*euclides mejorado
@@ -60,6 +60,56 @@ void rc4key(vector<string> tdeskey)
     rckey=key;
 }
 
+string cipher(string mensaje,vector<int>secuencia,vector<string>match)
+{
+    int cant_bloques=(mensaje.size()/block_size)+1;
+    while(mensaje.size()%block_size)
+    {
+        mensaje+='*';
+    }
+    string resultado="";
+    for(int i=0;i<cant_bloques;i++)
+    {
+        if (match[i]=="RSA")
+        {
+            for(int j=0;j<secuencia[i];j++)
+            {
+                resultado+=rsaemisor.cifrar(mensaje.substr(i*8,8));
+                i++;
+                if(i>=cant_bloques)
+                {
+                    break;
+                }
+            }
+        }
+        if (match[i]=="RC4,3DES")
+        {
+            for(int j=0;j<secuencia[i];j++)
+            {
+            resultado+=des.cipher(rc4.RC4_cypher(mensaje.substr(i*8,8)));
+                i++;
+                if(i>=cant_bloques)
+                {
+                    break;
+                }
+            }
+        }
+        if (match[i]=="ElGamal")
+        {
+            for(int j=0;j<secuencia[i];j++)
+            {
+            resultado+=gemisor.cifrar(mensaje.substr(i*8,8));
+                i++;
+            if(i>=cant_bloques)
+            {
+                break;
+            }
+        }
+        }
+        cout<<resultado<<endl;
+    }
+    return resultado;
+}
 
 
 /*
