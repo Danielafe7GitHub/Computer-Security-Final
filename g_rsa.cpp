@@ -42,7 +42,36 @@ void bloques()
     block_size_des=ayuda.size();
 }
 
+
 void tdeskey(ZZ MK)
+{
+    cout <<"Bob en tdeskey"<<endl;
+    int dMK, a = 0;
+    dMK = conv<int>(MK);
+    vector<string> keys;
+    string clave;
+    string str;
+    for (int j = 0; j < 3; j++) {
+        clave = "";
+        int w = 0;
+        do {
+            a += dMK;// % 16;
+            a += rand();
+            a = a %16;
+            str = toHex(a);
+            clave += str;
+            w++;
+        } while (w < 16);
+        keys.push_back(clave);
+    }
+    deskey=keys;
+    cout <<" termina tdesley" << endl;
+    return;
+}
+
+/*
+
+void tdeskey(ZZ MK) // funcion tdeskey con overflow
 {
     cout <<"Bob en tdeskey"<<endl;
     int dMK, a = 0;
@@ -67,6 +96,7 @@ void tdeskey(ZZ MK)
     cout <<" termina tdesley" << endl;
     return;
 }
+*/
 
 void rc4key(vector<string> tdeskey)
 {
@@ -83,19 +113,21 @@ void rc4key(vector<string> tdeskey)
 
 string cipher(string mensaje,vector<int>secuencia,vector<string>match)
 {
+    cout <<">>>> Cifrando" << endl;
     int cant_bloques=(mensaje.size()/block_size_cif)+1;
     cout<<"Tamaño de bloques: "<<block_size_cif<<endl;
-    while(mensaje.size()%block_size_cif)
-    {
+    int i =0;
+    while(mensaje.size()%block_size_cif){
+        i++;
         mensaje+='*';
-        cout<<"añado basura"<<endl;
+        //cout<<"añado basura"<<endl;
     }
+    cout <<"Relleno -> " << i << endl;
     string resultado="";
     cout<<"cantidad de bloques"<<cant_bloques<<endl;
     for(int i=0;i<cant_bloques;i++)
     {
-        if (match[i%match.size()]=="RSA")
-        {
+        if (match[i%match.size()]=="RSA"){
             cout<<"cifrado con RSA"<<endl;
             for(int j=0;j<secuencia[i];j++)
             {
@@ -139,6 +171,7 @@ string cipher(string mensaje,vector<int>secuencia,vector<string>match)
 }
 
 string decifrado(string mensaje, vector<int> secuencia, vector<string> match){
+    cout <<">>>> Descifrando" << endl;
     int cant_bloques=(mensaje.size()/block_size_des)+1;
     while(mensaje.size()%block_size_des)
     {

@@ -575,6 +575,13 @@ ZZ Phi(ZZ number)
 
 ///RC4
 
+string toHex(int number){
+    string aux[6]={"A","B","C","D","E","F"};
+    if( number > 9 )
+        return aux[number-10];
+    return to_string(number);
+}
+
 void dec_to_hex(char*buffer,int number)
 {
     long int decimalNumber,remainder,quotient;

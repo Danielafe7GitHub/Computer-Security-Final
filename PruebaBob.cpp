@@ -33,7 +33,6 @@ int main() {
     cout << "auxiliar " << aux << endl;
     cout << "-> " << cesar.decipher(aux) << endl;
     if (cesar.decipher(aux) == challenge) {
-
         salida << cesar.cipher(challenge) << endl;
         salida.flush();
         salida.close();
@@ -108,7 +107,8 @@ int main() {
     if(system("python3 socket/server.py"));
     entrada.open("documento.txt");
     getline(entrada,aux);
-    cout<<decifrado(aux,secuencia,match);
+    cout << "Descifrado" << endl;
+    cout << decifrado(aux,secuencia,match);
 
 
     //192.168.199.19
