@@ -117,13 +117,16 @@ string cipher(string mensaje,vector<int>secuencia,vector<string>match)
     int cant_bloques=(mensaje.size()/block_size_cif)+1;
     cout<<"Tamaño de bloques: "<<block_size_cif<<endl;
     int i =0;
+    /*
     while(mensaje.size()%block_size_cif){
         i++;
         mensaje+='*';
         //cout<<"añado basura"<<endl;
     }
     cout <<"Relleno -> " << i << endl;
+     */
     string resultado="";
+    cout <<"Mesage con basura: "<< mensaje << endl;
     cout<<"cantidad de bloques"<<cant_bloques<<endl;
     for(int i=0;i<cant_bloques;i++)
     {
@@ -131,8 +134,10 @@ string cipher(string mensaje,vector<int>secuencia,vector<string>match)
             cout<<"cifrado con RSA"<<endl;
             for(int j=0;j<secuencia[i];j++)
             {
-                resultado+=rsaemisor.cifrar(mensaje.substr(i*block_size_cif,block_size_cif));
+                string temp = rsaemisor.cifrar(mensaje.substr(i*block_size_cif,block_size_cif));
+                resultado+= temp;
                 i++;
+                cout <<"Bloque rsa: "<<temp << endl;
                 if(i>=cant_bloques)
                 {
                     break;
