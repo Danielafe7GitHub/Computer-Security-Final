@@ -16,6 +16,7 @@ class RSA
         ZZ resto_chino(ZZ);
         string cifrar(string);
         string descifrar(string);
+	string sinbasura(string mensaje);
         void generar_claves();
 
 
@@ -34,6 +35,24 @@ RSA::RSA()
 {
   
 }
+
+
+string RSA::sinbasura(string mensaje){
+char basura=mensaje[mensaje.size()-1];
+for (int i=mensaje.size()-1;mensaje[i]==basura && i>=0;i--)
+{
+
+ 	mensaje=mensaje.substr(0,mensaje.size()-1);
+}
+return mensaje;
+/*int pos_w=alfabeto.find('*');
+       	while (aux!=0)
+          {
+              msm_en_Numeros=msm_en_Numeros+Int_a_string(pos_w);
+              aux=modulo(msm_en_Numeros.size(),Tn.size()-1);
+          }*/
+}
+
 void RSA::emisor_RSA(int n_b)//constructor para el receptor el que genera sus propias claves
 {    //alfabeto="abcdefghijklmnopqrstuvxyz ABCDEFGHIJKLMNOPQRSTVXYZ_-.,{}():1234567890*";
      this->bits=n_b;
@@ -178,6 +197,7 @@ cout<<"cipher_dentro del descifar:"<<cipher<<endl;
        mensaje=mensaje+alfabeto[tmp1%alfabeto.size()];
        cout<<"Mensaje: "<<mensaje<<endl;
    }
+mensaje=sinbasura(mensaje);
 
   return mensaje;
 }
