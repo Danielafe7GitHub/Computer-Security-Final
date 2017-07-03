@@ -3,11 +3,11 @@
 import socket
 
 class CServer:
-    portServer = 8888
+    portServer = 9999
     client = None
     address = None
     filePath = ""
-    def __init__(self, port = 8888, numBytes = 8):
+    def __init__(self, port = 9999, numBytes = 8):
         print ("Iniciando servidor! ")
         self.filePath = "documento.txt"
         self.portServer = port

@@ -2,7 +2,7 @@ import socket
 from time import sleep
 
 class CClient:
-    port = 8888
+    port = 9999
     filePath = ""
     client = None
     file = None
@@ -58,5 +58,5 @@ class CClient:
         return str[:-1]
 
 address = input("ingrese ip a conectar: ")
-clientSocket = CClient(str(address), 8888)
+clientSocket = CClient(str(address), 9999)
 clientSocket.send("documento.txt")
