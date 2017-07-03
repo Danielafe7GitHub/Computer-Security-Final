@@ -82,6 +82,7 @@ string RC4_cypher(string text)
         auxiliar+=buffer[0];
         auxiliar+=buffer[1];
     }
+    cout <<"RC4 cifrado: " <<auxiliar << endl;
     return auxiliar;
 }
 

@@ -112,6 +112,7 @@ void rc4key(vector<string> tdeskey)
     }
     rckey=key;
     rc4.KRC4(key);
+    des.KTDES(tdeskey[0],tdeskey[1],tdeskey[2]);
 }
 
 string cipher(string mensaje,vector<int>secuencia,vector<string>match)

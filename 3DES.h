@@ -29,6 +29,7 @@ string TDES::cipher(string plaintext) {
     string c1 = des1->cipher(plaintext);
     string c2 = des2->cipher(c1);
     string c3 = des3->cipher(c2);
+    cout <<"3DES cifrado: " <<c3 << endl;
     return c3;
 }
 

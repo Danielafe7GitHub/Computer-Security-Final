@@ -7,7 +7,7 @@
 #include "g_rsa.cpp"
 #include "libreria.h"
 
-vector<string> algorythms {"RSA","RC4,3DES","ElGamal","GHOST"};
+vector<string> algorythms {"RC4,3DES","RSA","ElGamal","GHOST"};
 vector<string> match;
 vector<int> secuencia;
 
