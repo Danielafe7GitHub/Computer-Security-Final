@@ -21,7 +21,8 @@ class RSA
 
 
     protected:
-       string alfabeto;//="0123456789 abcdefghijklmnopqrstuvwxyz.,ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+       string alfabeto="abcdefghijklmnopqrstuvxyz ABCDEFGHIJKLMNOPQRSTVXYZ_-.,{}():1234567890*";
+    // alfabeto;//="0123456789 abcdefghijklmnopqrstuvwxyz.,ABCDEFGHIJKLMNOPQRSTUVWXYZ";
                      //"abcdefghijklmn�opqrstuvwxyz ABCDEFGHIJKLMOPQRSTUVWXYZ0123456789.,;:-_()@{}+/";
 
     private:
@@ -34,7 +35,7 @@ RSA::RSA()
   
 }
 void RSA::emisor_RSA(int n_b)//constructor para el receptor el que genera sus propias claves
-{    alfabeto="abcdefghijklmnopqrstuvxyz ABCDEFGHIJKLMNOPQRSTVXYZ_-.,{}():1234567890*";
+{    //alfabeto="abcdefghijklmnopqrstuvxyz ABCDEFGHIJKLMNOPQRSTVXYZ_-.,{}():1234567890*";
      this->bits=n_b;
      generar_claves();
      ofstream ficheroSalida;
@@ -54,7 +55,7 @@ void RSA::emisor_RSA(int n_b)//constructor para el receptor el que genera sus pr
 void RSA::receptor_RSA(ZZ e,ZZ n)//segundo constructor para el que va a cifrar.
 {    this->E=e;
      this->N=n;
-     alfabeto="0123456789 abcdefghijklmnopqrstuvwxyz.,ABCDEFGHIJKLMNOPQRSTUVWXYZ*";
+     //alfabeto="0123456789 abcdefghijklmnopqrstuvwxyz.,ABCDEFGHIJKLMNOPQRSTUVWXYZ*";
      //cout<<"RECEPTOR:"<<"E: "<<E<<"N:"<<N<<endl;
 }
 void RSA::generar_claves()//genera las claves este sirve para el primer constructor que indica con cuantos  bits va a trabajar
@@ -137,16 +138,18 @@ ZZ RSA::resto_chino(ZZ base)// c^d mod n
 }
 
 string RSA::descifrar(string cipher)
-{//cout<<"cipher_dentro del descifar:"<<cipher<<endl;
+{
+cout<<"cipher_dentro del descifar:"<<cipher<<endl;
  string Tn=ZZ_a_string(N),blo,pedasito,msm;
   ZZ evaluar;
   int tmp;
     for(int i=0;i<cipher.size();i=i+Tn.size())
     {  blo=cipher.substr(i,Tn.size());
-       //cout<<"bloque dentro del descifrado:"<<blo<<endl;
+       cout<<"bloque dentro del descifrado:"<<blo<<endl;
        evaluar=string_a_ZZ(blo);
-       evaluar=resto_chino(evaluar);
-       //evaluar=expon1(evaluar,D,N);
+       //evaluar=resto_chino(evaluar);
+       evaluar=expon1(evaluar,D,N);
+        cout<<"evaluar: "<<evaluar<<endl;
        pedasito=ZZ_a_string(evaluar);
        tmp=(Tn.size()-1)-pedasito.size();
        if(tmp!=0)
