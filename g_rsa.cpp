@@ -36,10 +36,10 @@ string rckey;
 void bloques()
 {
     string ayuda;
-    ayuda=ZZ_a_string(rsareceptor.N);
-    block_size_cif=ayuda.size();
-    ayuda=ZZ_a_string(rsaemisor.N);
-    block_size_des=ayuda.size();
+    //ayuda=ZZ_a_string(rsareceptor.N);
+    block_size_cif=8;
+    //ayuda=ZZ_a_string(rsaemisor.N);
+    block_size_des=8;//ayuda.size();
 }
 
 
