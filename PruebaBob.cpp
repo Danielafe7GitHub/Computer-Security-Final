@@ -85,8 +85,8 @@ int main() {
     cout << " despues de secuencia 2" << endl;
     cout<<"Clave RC4: "<<rckey<<endl;
     ///GENERACION DE CLAVES ASIMETRICAS PUBLICAS
-    rsaemisor.emisor_RSA(256);
-    gemisor.emisor_gamal(256);
+    rsaemisor.emisor_RSA(64);
+    gemisor.emisor_gamal(64);
     if(system("python3 socket/server.py"));
 
     vector<string> publicKeys = recopilar(cesar);
@@ -106,9 +106,11 @@ int main() {
     if(system("python3 socket/client.py"));
     if(system("python3 socket/server.py"));
     entrada.open("documento.txt");
+    aux = "";
     getline(entrada,aux);
+    cout << "leyendo " << aux <<"."<< endl;
     cout << "Descifrado" << endl;
-    cout << decifrado(aux,secuencia,match);
+    cout << decifrado(aux,secuencia,match) << endl;
 
 
     //192.168.199.19

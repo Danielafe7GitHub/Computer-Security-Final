@@ -172,12 +172,15 @@ string cipher(string mensaje,vector<int>secuencia,vector<string>match)
 
 string decifrado(string mensaje, vector<int> secuencia, vector<string> match){
     cout <<">>>> Descifrando" << endl;
+    cout << "tam mensaje " << mensaje.size() << "  -  " <<" block_size_des " << block_size_des<< endl;
     int cant_bloques=(mensaje.size()/block_size_des)+1;
+    /*
     while(mensaje.size()%block_size_des)
     {
         mensaje+='*';
         cout<<"añado basura"<<endl;
     }
+     */
     string resultado="";
     cout<<"cantidad de bloques"<<cant_bloques<<endl;
     for(int i=0;i<cant_bloques;i++)
