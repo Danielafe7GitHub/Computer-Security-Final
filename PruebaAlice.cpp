@@ -103,7 +103,7 @@ int main() {
     aux = cipher(mensaje, secuencia, match);
     cout<<"Mensaje cifrado: "<<aux<<endl;
     salida.open("documento.txt",std::ofstream::trunc);
-    salida<<aux<<endl;
+    salida<<aux;
     salida.flush();
     salida.close();
     if(system("python3 socket/client.py"));

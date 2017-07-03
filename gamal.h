@@ -10,6 +10,7 @@ using namespace std;
 class gamal
 {
     public:
+
     ZZ p,e1,e2;
        gamal();
         void emisor_gamal(int n_bit);
@@ -21,21 +22,22 @@ class gamal
         string descifrar(string);
     protected:
         string alfabeto;
-
     private:
         int n_bites;
         ZZ k_pr;
         ZZ r;
         ZZ C1,Km;
+
+
 };
 gamal::gamal()
 {
-  
+    alfabeto="0123456789 abcdefghijklmnopqrstuvwxyz.,ABCDEFGHIJKLMNOPQRSTUVWXYZ*";
 }
 
 void gamal::emisor_gamal(int n_bit)
 {
-alfabeto="abcdefghijklmnopqrstuvxyz ABCDEFGHIJKLMNOPQRSTVXYZ_-.,{}():1234567890*";
+    //alfabeto="abcdefghijklmnopqrstuvxyz ABCDEFGHIJKLMNOPQRSTVXYZ_-.,{}():1234567890*";
     n_bites=n_bit;
     generar_claves();
      ofstream ficheroSalida;
@@ -54,7 +56,7 @@ alfabeto="abcdefghijklmnopqrstuvxyz ABCDEFGHIJKLMNOPQRSTVXYZ_-.,{}():1234567890*
 }
 void gamal::receptor_gamal(ZZ P,ZZ E1,ZZ E2)
 {
-alfabeto="0123456789 abcdefghijklmnopqrstuvwxyz.,ABCDEFGHIJKLMNOPQRSTUVWXYZ*";
+    //alfabeto="0123456789 abcdefghijklmnopqrstuvwxyz.,ABCDEFGHIJKLMNOPQRSTUVWXYZ*";
 
    this->p=P;
    this->e1=E1;
