@@ -144,14 +144,20 @@ ZZ RSA::resto_chino(ZZ base)// c^d mod n
               aux=modulo(msm_en_Numeros.size(),Tn.size()-1);
           }
         for(int i=0;i<msm_en_Numeros.size();i=i+(Tn.size()-1))
-            {bloque=msm_en_Numeros.substr(i,Tn.size()-1);
+            {
+                bloque=msm_en_Numeros.substr(i,Tn.size()-1);
+
              blok=string_a_ZZ(bloque);
              blok=expon1(blok,E,N);
+             //cout <<"cifrado: "<<i<<" "<<bloque<<" -> "<<blok << endl;
              pedasos=ZZ_a_string(blok);
              dife=Tn.size()-pedasos.size();
+
              if(dife!=0)
                 {pedasos=completar(pedasos,dife);}
+
              cipher_msm=cipher_msm+pedasos;
+                //cout << pedasos << endl;
             }
  return cipher_msm;
 }

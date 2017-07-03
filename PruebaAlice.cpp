@@ -97,6 +97,9 @@ int main() {
     rsareceptor.receptor_RSA(string_a_ZZ(publicKeys[0]), string_a_ZZ(publicKeys[1]));
     greceptor.receptor_gamal(string_a_ZZ(publicKeys[4]), string_a_ZZ(publicKeys[2]), string_a_ZZ(publicKeys[3]));
 
+    cout <<" claves RSA receptop" << endl;
+    cout << rsareceptor.E << " " << rsareceptor.N << endl;
+
     bloques();
     string mensaje;
     cin >> mensaje;
