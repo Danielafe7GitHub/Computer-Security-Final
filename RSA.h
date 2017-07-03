@@ -149,7 +149,7 @@ ZZ RSA::resto_chino(ZZ base)// c^d mod n
 
              blok=string_a_ZZ(bloque);
              blok=expon1(blok,E,N);
-             //cout <<"cifrado: "<<i<<" "<<bloque<<" -> "<<blok << endl;
+             cout <<"cifrado: "<<i<<" "<<bloque<<" -> "<<blok << endl;
              pedasos=ZZ_a_string(blok);
              dife=Tn.size()-pedasos.size();
 

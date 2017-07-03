@@ -138,7 +138,7 @@ string cipher(string mensaje,vector<int>secuencia,vector<string>match)
             cout<<"cifrado con RSA"<<endl;
             for(int j=0;j<secuencia[i];j++)
             {
-                string temp = rsaemisor.cifrar(mensaje.substr(i*block_size_cif,block_size_cif));
+                string temp = rsareceptor.cifrar(mensaje.substr(i*block_size_cif,block_size_cif));
                 documento<<temp<<endl;
                 i++;
                 cout <<"Bloque rsa: "<<temp << endl;
