@@ -197,7 +197,7 @@ string decifrado(string mensaje, vector<int> secuencia, vector<string> match){
     string resultado="",aux;
     ifstream documento;
     documento.open("documento.txt");
-    cout<<"cantidad de bloques"<<cant_bloques<<endl;
+    //cout<<"cantidad de bloques"<<cant_bloques<<endl;
     int i=0;
     while(getline(documento,aux))
     {
@@ -208,7 +208,7 @@ string decifrado(string mensaje, vector<int> secuencia, vector<string> match){
             {
                 resultado+=rsaemisor.descifrar(aux);
                 i++;
-                if(i>=cant_bloques)
+                if(!getline(documento,aux))
                 {
                     break;
                 }
@@ -221,7 +221,7 @@ string decifrado(string mensaje, vector<int> secuencia, vector<string> match){
             {
                 resultado+=des.decipher(rc4.RC4_cypher(aux));
                 i++;
-                if(i>=cant_bloques)
+                if(!getline(documento,aux))
                 {
                     break;
                 }
@@ -234,7 +234,7 @@ string decifrado(string mensaje, vector<int> secuencia, vector<string> match){
             {
                 resultado+=gemisor.descifrar(aux);
                 i++;
-                if(i>=cant_bloques)
+                if(!getline(documento,aux))
                 {
                     break;
                 }

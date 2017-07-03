@@ -81,11 +81,11 @@ void guardarContenido(const char* filename, string dato)
     file.close();
 }
 
-string sinbasura(string mensaje){
-char basura=mensaje[mensaje.size()-1];
-for (int i=mensaje.size()-1;mensaje[i]==basura && i>=0;i--)
-{
+string sinbasura(string mensaje) {
+    char basura = mensaje[mensaje.size() - 1];
+    for (int i = mensaje.size() - 1; mensaje[i] == basura && i >= 0; i--) {
 
- 	mensaje=mensaje.substr(0,mensaje.size()-1);
+        mensaje = mensaje.substr(0, mensaje.size() - 1);
+    }
 }
 #endif //COMPUTER_SECURITY_FINAL_TOOLS_H
