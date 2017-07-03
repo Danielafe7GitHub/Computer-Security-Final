@@ -105,20 +105,35 @@ int main() {
     cout<<"Enviar claves públicas"<<endl;
     bloques();
     if(system("python3 socket/client.py"));
-    if(system("python3 socket/server.py"));
-    /*entrada.open("documento.txt",std::ifstream::binary);
-    aux = "";
-    cout<<"puntero: "<<entrada.tellg()<<endl;
-    entrada.seekg(0,entrada.beg);
-    cout<<"puntero: "<<entrada.tellg()<<endl;
-    while(getline(entrada,aux))
+
+    string mensaje;
+    while(true)
     {
-        cout <<aux<<endl;
-    }*/
-    aux=get_file_contents("documento.txt");
-    cout << "leyendo " << aux <<"."<< endl;
-    cout << "Descifrado" << endl;
-    cout << decifrado(aux,secuencia,match) << endl;
+        if(system("python3 socket/server.py"));
+        /*entrada.open("documento.txt",std::ifstream::binary);
+        aux = "";
+        cout<<"puntero: "<<entrada.tellg()<<endl;
+        entrada.seekg(0,entrada.beg);
+        cout<<"puntero: "<<entrada.tellg()<<endl;
+        while(getline(entrada,aux))
+        {
+            cout <<aux<<endl;
+        }*/
+        aux=get_file_contents("documento.txt");
+        cout << "leyendo " << aux <<"."<< endl;
+        cout << "Descifrado" << endl;
+        cout << decifrado(aux,secuencia,match) << endl;
+
+        cin >> mensaje;
+        cipher(mensaje, secuencia, match);
+        //cout<<"Mensaje cifrado: "<<aux<<endl;
+        /*salida.open("documento.txt",std::ofstream::trunc);
+        salida<<aux;
+        salida.flush();
+        salida.close();*/
+        if(system("python3 socket/client.py"));
+
+    }
 
 
     //192.168.199.19
