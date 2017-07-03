@@ -131,7 +131,7 @@ string cipher(string mensaje,vector<int>secuencia,vector<string>match)
             cout<<"cifrado con RSA"<<endl;
             for(int j=0;j<secuencia[i];j++)
             {
-                resultado+=rsaemisor.cifrar(mensaje.substr(i*8,8));
+                resultado+=rsaemisor.cifrar(mensaje.substr(i*block_size_cif,block_size_cif));
                 i++;
                 if(i>=cant_bloques)
                 {
@@ -190,7 +190,7 @@ string decifrado(string mensaje, vector<int> secuencia, vector<string> match){
             cout<<"cifrado con RSA"<<endl;
             for(int j=0;j<secuencia[i];j++)
             {
-                resultado+=rsaemisor.descifrar(mensaje.substr(i*8,8));
+                resultado+=rsaemisor.descifrar(mensaje.substr(i*block_size_des,block_size_des));
                 i++;
                 if(i>=cant_bloques)
                 {
