@@ -90,11 +90,16 @@ string RC4_decypher(string cypher)
 {
     RC4_init();
     int ixor;
-    string auxiliar="";
+    string auxiliar="",aiuda;
     int decypher[cypher.size()/2];
     for (int i=0;i<cypher.size()/2;i++)
     {
-        decypher[i]=hex2dec(cypher.substr(i*2,2));
+        aiuda=cypher.substr(i*2,2);
+        if(aiuda=="00"){}
+        else
+        {
+            decypher[i]=hex2dec(aiuda);
+        }
     }
     for(int i=0;i<cypher.size()/2;i++)
     {

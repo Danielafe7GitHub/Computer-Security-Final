@@ -221,7 +221,8 @@ string decifrado(string mensaje, vector<int> secuencia, vector<string> match){
             cout<<"descifrado simetrico"<<endl;
             for(int j=0;j<secuencia[i];j++)
             {
-                resultado+=des.decipher(rc4.RC4_cypher(aux));
+                cout<<"descifrado 3des: "<<des.decipher(aux)<<endl;
+                resultado+=rc4.RC4_decypher(des.decipher(aux));
                 i++;
                 if(!getline(documento,aux))
                 {
