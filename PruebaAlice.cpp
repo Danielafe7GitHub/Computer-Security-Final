@@ -104,7 +104,7 @@ int main() {
     string mensaje;
     while (true)
     {
-        cin >> mensaje;
+        getline(cin,mensaje);
         cipher(mensaje, secuencia, match);
         //cout<<"Mensaje cifrado: "<<aux<<endl;
         /*salida.open("documento.txt",std::ofstream::trunc);

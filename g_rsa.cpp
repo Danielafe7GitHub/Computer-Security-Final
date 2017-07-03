@@ -122,7 +122,7 @@ string cipher(string mensaje,vector<int>secuencia,vector<string>match)
     cout <<">>>> Cifrando" << endl;
     int cant_bloques=(mensaje.size()/block_size_cif)+1;
     cout<<"Tamaño de bloques: "<<block_size_cif<<endl;
-    int i =0;
+    int i =0,cont=0;
     /*
     while(mensaje.size()%block_size_cif){
         i++;
@@ -137,12 +137,13 @@ string cipher(string mensaje,vector<int>secuencia,vector<string>match)
     for(int i=0;i<cant_bloques;i++)
     {
         if (match[i%match.size()]=="RSA"){
+            cout<<"bloque #"<<i<<endl;
             cout<<"cifrado con RSA"<<endl;
             for(int j=0;j<secuencia[i];j++)
             {
                 string temp = rsareceptor.cifrar(mensaje.substr(i*block_size_cif,block_size_cif));
                 documento<<temp<<endl;
-                i++;
+                cont++;
                 cout <<"Bloque rsa: "<<temp << endl;
                 if(i>=cant_bloques)
                 {
@@ -152,12 +153,13 @@ string cipher(string mensaje,vector<int>secuencia,vector<string>match)
         }
         else if (match[i%match.size()]=="RC4,3DES")
         {
+            cout<<"bloque #"<<i<<endl;
             cout<<"cifrado simetrico"<<endl;
             for(int j=0;j<secuencia[i];j++)
             {
-            //resultado+=des.cipher(rc4.RC4_cypher(mensaje.substr(i*8,8)));
+                //resultado+=des.cipher(rc4.RC4_cypher(mensaje.substr(i*8,8)));
                 documento<<des.cipher(rc4.RC4_cypher(mensaje.substr(i*8,8)))<<endl;
-                i++;
+                cont++;
                 if(i>=cant_bloques)
                 {
                     break;
@@ -166,12 +168,13 @@ string cipher(string mensaje,vector<int>secuencia,vector<string>match)
         }
         else if (match[i%match.size()]=="ElGamal")
         {
+            cout<<"bloque #"<<i<<endl;
             cout<<"cifrado con ElGamal"<<endl;
             for(int j=0;j<secuencia[i];j++)
             {
-            //resultado+=gemisor.cifrar(mensaje.substr(i*8,8));
+                //resultado+=gemisor.cifrar(mensaje.substr(i*8,8));
                 documento<<gemisor.cifrar(mensaje.substr(i*8,8))<<endl;
-                i++;
+                cont++;
             if(i>=cant_bloques)
             {
                 break;
@@ -179,6 +182,7 @@ string cipher(string mensaje,vector<int>secuencia,vector<string>match)
         }
         }
         //cout<<resultado<<endl;
+        i+=cont;
     }
     documento.flush();
     documento.close();
@@ -200,7 +204,7 @@ string decifrado(string mensaje, vector<int> secuencia, vector<string> match){
     ifstream documento;
     documento.open("documento.txt");
     //cout<<"cantidad de bloques"<<cant_bloques<<endl;
-    int i=0;
+    int i=0,cont=0;
     while(getline(documento,aux))
     {
         if (match[i%match.size()]=="RSA")
@@ -209,7 +213,7 @@ string decifrado(string mensaje, vector<int> secuencia, vector<string> match){
             for(int j=0;j<secuencia[i];j++)
             {
                 resultado+=rsaemisor.descifrar(aux);
-                i++;
+                cont++;
                 if(!getline(documento,aux))
                 {
                     break;
@@ -223,7 +227,7 @@ string decifrado(string mensaje, vector<int> secuencia, vector<string> match){
             {
                 cout<<"descifrado 3des: "<<des.decipher(aux)<<endl;
                 resultado+=rc4.RC4_decypher(des.decipher(aux));
-                i++;
+                cont++;
                 if(!getline(documento,aux))
                 {
                     break;
@@ -236,7 +240,7 @@ string decifrado(string mensaje, vector<int> secuencia, vector<string> match){
             for(int j=0;j<secuencia[i];j++)
             {
                 resultado+=gemisor.descifrar(aux);
-                i++;
+                cont++;
                 if(!getline(documento,aux))
                 {
                     break;
@@ -244,6 +248,7 @@ string decifrado(string mensaje, vector<int> secuencia, vector<string> match){
             }
         }
         cout<<resultado<<endl;
+        i+=cont;
     }
     return resultado;
 }
