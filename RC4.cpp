@@ -89,19 +89,26 @@ string RC4_cypher(string text)
 string RC4_decypher(string cypher)
 {
     RC4_init();
+    cout<<"descifrar: "<<cypher<<endl;
     int ixor;
     string auxiliar="",aiuda;
-    int decypher[cypher.size()/2];
-    for (int i=0;i<cypher.size()/2;i++)
+    int saiz=cypher.size()/2;
+    cout<<"tamaño: "<<saiz<<endl;
+    int decypher[saiz];
+    int a=0;
+    for (int i=0;i<saiz;i++)
     {
         aiuda=cypher.substr(i*2,2);
-        if(aiuda=="00"){}
+        cout<<"ayuda: "<<aiuda<<endl;
+        if(aiuda=="00"){a++;}
         else
         {
             decypher[i]=hex2dec(aiuda);
+            cout<<"pos "<<i<<" -> "<<aiuda<<" -> "<<decypher[i]<<endl;
         }
     }
-    for(int i=0;i<cypher.size()/2;i++)
+    saiz-=a;
+    for(int i=0;i<saiz;i++)
     {
         ixor=decypher[i]^K[i];
         char aux=ixor;
