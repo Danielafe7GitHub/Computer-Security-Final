@@ -63,4 +63,23 @@ void escribir(vector<string> text, string archivo, Cesar cesar){
 }
 */
 
+
+string get_file_contents(const char *filename)
+{
+    ifstream in(filename, std::ios::in | std::ios::binary);
+    if (in)
+    {
+        return(string( (std::istreambuf_iterator<char>(in)), std::istreambuf_iterator<char>() ));
+    }
+}
+
+void guardarContenido(const char* filename, string dato)
+{
+    ofstream file;
+    file.open(filename,ofstream::binary);
+    file << dato;
+    file.close();
+}
+
+
 #endif //COMPUTER_SECURITY_FINAL_TOOLS_H
