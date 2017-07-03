@@ -149,7 +149,7 @@ ZZ RSA::resto_chino(ZZ base)// c^d mod n
 
              blok=string_a_ZZ(bloque);
              blok=expon1(blok,E,N);
-             cout <<"cifrado: "<<i<<" "<<bloque<<" -> "<<blok << endl;
+             //cout <<"cifrado: "<<i<<" "<<bloque<<" -> "<<blok << endl;
              pedasos=ZZ_a_string(blok);
              dife=Tn.size()-pedasos.size();
 
@@ -164,20 +164,20 @@ ZZ RSA::resto_chino(ZZ base)// c^d mod n
 
 string RSA::descifrar(string cipher)
 {
-cout<<"cipher_dentro del descifar:"<<cipher<<endl;
+/*cout<<"cipher_dentro del descifar:"<<cipher<<endl;
     cout<<"e: "<<E<<endl;
     cout<<"N: "<<N<<endl;
-    cout<<"D: "<<D<<endl;
+    cout<<"D: "<<D<<endl;*/
  string Tn=ZZ_a_string(N),blo,pedasito,msm;
   ZZ evaluar;
   int tmp;
     for(int i=0;i<cipher.size();i=i+Tn.size())
     {  blo=cipher.substr(i,Tn.size());
-       cout<<"bloque dentro del descifrado:"<<blo<<endl;
+       //cout<<"bloque dentro del descifrado:"<<blo<<endl;
        evaluar=string_a_ZZ(blo);
        //evaluar=resto_chino(evaluar);
        evaluar=expon1(evaluar,D,N);
-        cout<<"evaluar: "<<evaluar<<endl;
+        //cout<<"evaluar: "<<evaluar<<endl;
        pedasito=ZZ_a_string(evaluar);
        tmp=(Tn.size()-1)-pedasito.size();
        if(tmp!=0)
@@ -185,7 +185,7 @@ cout<<"cipher_dentro del descifar:"<<cipher<<endl;
           pedasito=completar(pedasito,tmp);
        }
        msm=msm+pedasito;
-        cout<<"mensaje con ceros: "<<msm<<endl;
+        //cout<<"mensaje con ceros: "<<msm<<endl;
     }
   string letter_sig=Int_a_string(alfabeto.size()-1);
   string sub_msm,mensaje;
@@ -193,9 +193,9 @@ cout<<"cipher_dentro del descifar:"<<cipher<<endl;
    for(int i=0;i<msm.size();i=i+letter_sig.size())
    {  sub_msm=msm.substr(i,letter_sig.size());
       tmp1=string_a_int(sub_msm);
-       cout<<" -> "<<sub_msm<<" -> "<<tmp1<<" = "<<alfabeto[tmp1%alfabeto.size()]<<endl;
+       //cout<<" -> "<<sub_msm<<" -> "<<tmp1<<" = "<<alfabeto[tmp1%alfabeto.size()]<<endl;
        mensaje=mensaje+alfabeto[tmp1%alfabeto.size()];
-       cout<<"Mensaje: "<<mensaje<<endl;
+       //cout<<"Mensaje: "<<mensaje<<endl;
    }
 mensaje=sinbasura(mensaje);
 
