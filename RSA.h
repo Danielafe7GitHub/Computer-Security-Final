@@ -146,6 +146,9 @@ ZZ RSA::resto_chino(ZZ base)// c^d mod n
 string RSA::descifrar(string cipher)
 {
 cout<<"cipher_dentro del descifar:"<<cipher<<endl;
+    cout<<"e: "<<E<<endl;
+    cout<<"N: "<<N<<endl;
+    cout<<"D: "<<D<<endl;
  string Tn=ZZ_a_string(N),blo,pedasito,msm;
   ZZ evaluar;
   int tmp;
@@ -163,6 +166,7 @@ cout<<"cipher_dentro del descifar:"<<cipher<<endl;
           pedasito=completar(pedasito,tmp);
        }
        msm=msm+pedasito;
+        cout<<"mensaje con ceros: "<<msm<<endl;
     }
   string letter_sig=Int_a_string(alfabeto.size()-1);
   string sub_msm,mensaje;
@@ -170,7 +174,9 @@ cout<<"cipher_dentro del descifar:"<<cipher<<endl;
    for(int i=0;i<msm.size();i=i+letter_sig.size())
    {  sub_msm=msm.substr(i,letter_sig.size());
       tmp1=string_a_int(sub_msm);
-      mensaje=mensaje+alfabeto[tmp1];
+       cout<<" -> "<<sub_msm<<" -> "<<tmp1<<" = "<<alfabeto[tmp1%alfabeto.size()]<<endl;
+       mensaje=mensaje+alfabeto[tmp1%alfabeto.size()];
+       cout<<"Mensaje: "<<mensaje<<endl;
    }
 
   return mensaje;

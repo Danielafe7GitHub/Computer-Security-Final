@@ -103,12 +103,12 @@ int main() {
     bloques();
     string mensaje;
     cin >> mensaje;
-    aux = cipher(mensaje, secuencia, match);
-    cout<<"Mensaje cifrado: "<<aux<<endl;
-    salida.open("documento.txt",std::ofstream::trunc);
+    cipher(mensaje, secuencia, match);
+    //cout<<"Mensaje cifrado: "<<aux<<endl;
+    /*salida.open("documento.txt",std::ofstream::trunc);
     salida<<aux;
     salida.flush();
-    salida.close();
+    salida.close();*/
     if(system("python3 socket/client.py"));
 
 
