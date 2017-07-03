@@ -111,6 +111,7 @@ void rc4key(vector<string> tdeskey)
         cout << "key: " << key << endl;
     }
     rckey=key;
+    rc4.KRC4(key);
 }
 
 string cipher(string mensaje,vector<int>secuencia,vector<string>match)
