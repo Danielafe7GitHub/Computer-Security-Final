@@ -103,11 +103,19 @@ int main() {
     salida.flush();
     salida.close();
     cout<<"Enviar claves públicas"<<endl;
+    bloques();
     if(system("python3 socket/client.py"));
     if(system("python3 socket/server.py"));
-    entrada.open("documento.txt");
+    /*entrada.open("documento.txt",std::ifstream::binary);
     aux = "";
-    getline(entrada,aux);
+    cout<<"puntero: "<<entrada.tellg()<<endl;
+    entrada.seekg(0,entrada.beg);
+    cout<<"puntero: "<<entrada.tellg()<<endl;
+    while(getline(entrada,aux))
+    {
+        cout <<aux<<endl;
+    }*/
+    aux=get_file_contents("documento.txt");
     cout << "leyendo " << aux <<"."<< endl;
     cout << "Descifrado" << endl;
     cout << decifrado(aux,secuencia,match) << endl;

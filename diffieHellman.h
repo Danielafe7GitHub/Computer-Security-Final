@@ -48,7 +48,7 @@ pair<ZZ,ZZ> AliceBob(ZZ prime, ZZ random)
 
     /*Generando txt Diffie Hellman*/
     ofstream clavesPublicasDiffieHellman;
-    clavesPublicasDiffieHellman.open("documento.txt");
+    clavesPublicasDiffieHellman.open("documento.txt",std::ofstream::trunc);
     clavesPublicasDiffieHellman<<"A"<<endl;
     clavesPublicasDiffieHellman<<prime<<endl;
     clavesPublicasDiffieHellman<<random<<endl;
@@ -123,6 +123,8 @@ ZZ sujetoNoGeneraParametros()
     ZZ prime,random,pubAlice;
     string praim, ramdom, alice,a;
     if(system("python3 socket/server.py"));
+    cout<<"Ya llegó el paquete"<<endl;
+    cin.get();
     ifstream doc;
     doc.open("documento.txt");
     doc.seekg(0,doc.beg);

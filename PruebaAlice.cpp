@@ -80,8 +80,8 @@ int main() {
     rc4key(deskey);
     cout << "Clave RC4: " << rckey << endl;
     ///GENERACION DE CLAVES ASIMETRICAS PUBLICAS
-    rsaemisor.emisor_RSA(256);
-    gemisor.emisor_gamal(256);
+    rsaemisor.emisor_RSA(64);
+    gemisor.emisor_gamal(64);
     salida.open("documento.txt", std::ofstream::trunc);
     salida << cesar.cipher(ZZ_a_string(rsaemisor.E)) << endl;
     salida << cesar.cipher(ZZ_a_string(rsaemisor.N)) << endl;
@@ -114,5 +114,6 @@ int main() {
     //192.168.199.9
     //192.168.161.82
     //192.168.199.207
+    //192.168.198.53
 }
 
